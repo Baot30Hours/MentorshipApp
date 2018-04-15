@@ -1,0 +1,31 @@
+<p>
+  <strong>Nems:</strong>
+  <%= @mentee.name %>
+</p>
+ 
+<p>
+  <strong>Email:</strong>
+  <%= @mentee.email %>
+</p>
+
+<p>
+  <strong>Date Created:</strong>
+  <%= @mentee.date_created %>
+</p>
+
+<p>
+  <strong>Job Title:</strong>
+  <%= @mentee.job_title %>
+</p>
+
+<p>
+  <strong>Expertise:</strong>
+  <%= @mentee.expertise %>
+</p>
+
+<p>
+  <strong>Notes:</strong>
+  <%= @mentee.notes %>
+</p>
+<%= link_to 'Edit', edit_mentee_path(@mentee) %> |
+<%= link_to 'Back', mentees_path %>

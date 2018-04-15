@@ -1,0 +1,51 @@
+<%= form_with model: @mentee, local: true do |form| %>
+  <% if @mentee.errors.any? %>
+    <div id="error_explanation">
+      <h2>
+        <%= pluralize(@mentee.errors.count, "error") %> prohibited
+        this mentee from being saved:
+      </h2>
+      <ul>
+        <% @mentee.
+      errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <p>
+    <%= form.label :name %><br>
+    <%= form.text_field :name %>
+  </p>
+ 
+  <p>
+    <%= form.label :email %><br>
+    <%= form.text_field :email %>
+  </p>
+
+  <p>
+    <%= form.label :date_created %><br>
+    <%= form.date_field :date_created %>
+  </p>
+
+  <p>
+    <%= form.label :job_title %><br>
+    <%= form.text_field :job_title %>
+  </p>
+
+  <p>
+    <%= form.label :expertise %><br>
+    <%= form.text_area :expertise %>
+  </p>
+
+  <p>
+    <%= form.label :notes %><br>
+    <%= form.text_area :notes %>
+  </p>
+ 
+  <p>
+    <%= form.submit %>
+  </p>
+ 
+<% end %>
