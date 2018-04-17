@@ -1,25 +1,17 @@
 # MentorshipApp
  Mentorship application in #30Hours program of Baot Organization
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
+System information:
 
 * Ruby version
+ruby 2.5.0p0 (2017-12-25 revision 61468) [x86_64-darwin16]
 
-* System dependencies
+* Rails version
+rails 5.1.5
 
-* Configuration
+-- For MAC use the following tutorial to install the environment: https://gorails.com/setup/osx/10.13-high-sierra
 
 * Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+In the config/database.yml file you can find the db username and password. 
+user = iragz
+pass =<empty>

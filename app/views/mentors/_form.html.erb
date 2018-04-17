@@ -1,0 +1,52 @@
+<%= form_with model: @mentor, local: true do |form| %>
+ 
+  <% if @mentor.errors.any? %>
+    <div id="error_explanation">
+      <h2>
+        <%= pluralize(@mentor.errors.count, "error") %> prohibited
+        this mentor from being saved:
+      </h2>
+      <ul>
+        <% @mentor.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  
+  <p>
+    <%= form.label :name %><br>
+    <%= form.text_field :name %>
+  </p>
+  
+  <p>
+    <%= form.label :email %><br>
+    <%= form.text_field :email %>
+  </p>
+
+  <p>
+    <%= form.label :date_created %><br>
+    <%= form.date_field :date_created %>
+  </p>
+
+  <p>
+    <%= form.label :job_title %><br>
+    <%= form.text_field :job_title %>
+  </p>
+
+
+  <p>
+    <%= form.label :expertise %><br>
+    <%= form.text_area :expertise %>
+  </p>
+
+  <p>
+    <%= form.label :mentee_slots %><br>
+    <%= form.number_field :mentee_slots %>
+  </p>
+ 
+  <p>
+    <%= form.submit %>
+  </p>
+ 
+<% end %>

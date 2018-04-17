@@ -1,0 +1,31 @@
+<p>
+  <strong>Nems:</strong>
+  <%= @mentor.name %>
+</p>
+ 
+<p>
+  <strong>Email:</strong>
+  <%= @mentor.email %>
+</p>
+
+<p>
+  <strong>Date Created:</strong>
+  <%= @mentor.date_created %>
+</p>
+
+<p>
+  <strong>Job Title:</strong>
+  <%= @mentor.job_title %>
+</p>
+
+<p>
+  <strong>Expertise:</strong>
+  <%= @mentor.expertise %>
+</p>
+
+<p>
+  <strong>Mentee Slots:</strong>
+  <%= @mentor.mentee_slots %>
+</p>
+<%= link_to 'Edit', edit_mentor_path(@mentor) %> |
+<%= link_to 'Back', mentors_path %>
