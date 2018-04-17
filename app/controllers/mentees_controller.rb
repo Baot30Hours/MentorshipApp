@@ -1,6 +1,6 @@
 class MenteesController < ApplicationController		
       def index
-      	  @mentee = Mentee.all
+      	  @mentees = Mentee.all
       end
 
       def show
@@ -39,7 +39,7 @@ class MenteesController < ApplicationController
       	  @mentee = Mentee.find(params[:id])
       	  @mentee.destroy
       	  
-	  redirect_to mentee_path
+	  redirect_to mentees_path
       end
 
       private
