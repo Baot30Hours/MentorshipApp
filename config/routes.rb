@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   resources :mentors
   resources :mentees
   resources :connections
+  resources :events
   resources :users
 
   root 'welcome#index'
