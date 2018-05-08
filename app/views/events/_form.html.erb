@@ -1,5 +1,5 @@
-<%= form_with model: @event, local: true do |form| %>
-  <% if @event.errors.any? %>
+<%= form_with(model: [ @connection, @connection.events.build ], local: true) do |form| %>
+  <!--% if @event.errors.any? %>
     <div id="error_explanation">
       <h2>
         <%= pluralize(@event.errors.count, "error") %> prohibited
@@ -12,7 +12,7 @@
         <% end %>
       </ul>
     </div>
-  <% end %>
+  <% end %-->
 
   <p>
     <%= form.label :event_type %><br>

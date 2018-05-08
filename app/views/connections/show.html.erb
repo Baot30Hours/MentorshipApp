@@ -1,0 +1,14 @@
+<p> Connection:
+<p>
+  <strong>Mentor:</strong>
+  <%= @connection.mentor.name %>
+</p>
+ 
+<h2>Events</h2>
+<%= render @connection.events %>
+ 
+<h2>Add an event:</h2>
+<%= render 'events/form' %>
+ 
+<%= link_to 'Edit', edit_connection_path(@connection) %> |
+<%= link_to 'Back', connections_path %>
