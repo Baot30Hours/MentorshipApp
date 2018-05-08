@@ -10,17 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180420143831) do
+ActiveRecord::Schema.define(version: 20180423104533) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
-
-  create_table "articles", force: :cascade do |t|
-    t.string "title"
-    t.text "text"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
 
   create_table "connections", force: :cascade do |t|
     t.bigint "Mentee_id"
@@ -32,14 +25,14 @@ ActiveRecord::Schema.define(version: 20180420143831) do
   end
 
   create_table "events", force: :cascade do |t|
-    t.bigint "Connection_id"
-    t.string "type"
+    t.bigint "connection_id"
+    t.string "event_type"
     t.string "method"
     t.datetime "date"
     t.text "notes"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["Connection_id"], name: "index_events_on_Connection_id"
+    t.index ["connection_id"], name: "index_events_on_connection_id"
   end
 
   create_table "mentees", force: :cascade do |t|
@@ -74,4 +67,5 @@ ActiveRecord::Schema.define(version: 20180420143831) do
     t.string "password_digest"
   end
 
+  add_foreign_key "events", "connections"
 end
