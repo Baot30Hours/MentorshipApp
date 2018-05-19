@@ -7,10 +7,14 @@
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
-
+ 
   <body>
     <div class="container">
-      	<%= render 'shared/navigation_guest' %>
+	<% if 'logged_in?' %>
+	    <%= render 'shared/navigation_guest' %>
+	<% else %>
+       	    <%= render 'shared/navigation' %>
+	<% end %>
       <% flash.each do |message_type, message| %>
         <div class="alert alert-<%= message_type %>"><%= message %></div>
       <% end %>
