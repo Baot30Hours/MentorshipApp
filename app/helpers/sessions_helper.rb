@@ -14,20 +14,26 @@ module SessionsHelper
 
   # Returns the current logged-in user (if any).
   def current_user
+	logger.debug "get current user"
      if (user_id = session[:user_id])
         @current_user ||= User.find_by(id: user_id)
+	logger.debug "if"
+	logger.debug @current_user
      elsif (user_id = cookies.signed[:user_id])
         user = User.find_by(id: user_id)
         if user && user.authenticated?(cookies[:remember_token])
            log_in user
            @current_user = user
+	   logger.debug "if2"
+	   logger.debug @current_user
         end
      end
   end
 
   # Returns true if the user is logged in, false otherwise.
   def logged_in?
-    !@current_user.nil?
+    logger.debug "check if user logged in"
+    !current_user.nil?
   end 
 
   # Logs out the current user.
