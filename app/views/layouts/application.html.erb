@@ -10,10 +10,17 @@
  
   <body>
     <div class="container">
-	<% if 'logged_in?' %>
-	    <%= render 'shared/navigation_guest' %>
+	<% if logged_in? %>
+	    logged in
+	    <%= puts @current_user %>
+	    <%= render 'shared/navigation' %>
 	<% else %>
-       	    <%= render 'shared/navigation' %>
+	    not logged in
+            <pre>
+  		<%= @current_user.inspect %>
+	    </pre>
+
+       	    <%= render 'shared/navigation_guest' %>
 	<% end %>
       <% flash.each do |message_type, message| %>
         <div class="alert alert-<%= message_type %>"><%= message %></div>
