@@ -15,50 +15,6 @@ ActiveRecord::Schema.define(version: 20180507065830) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "connections", force: :cascade do |t|
-    t.bigint "Mentee_id"
-    t.bigint "Mentor_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["Mentee_id"], name: "index_connections_on_Mentee_id"
-    t.index ["Mentor_id"], name: "index_connections_on_Mentor_id"
-  end
-
-  create_table "events", force: :cascade do |t|
-    t.bigint "Connection_id"
-    t.string "event_type"
-    t.string "method"
-    t.datetime "date"
-    t.text "notes"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["Connection_id"], name: "index_events_on_Connection_id"
-  end
-
-  create_table "mentees", force: :cascade do |t|
-    t.string "email"
-    t.string "name"
-    t.datetime "date_created"
-    t.string "job_title"
-    t.string "string"
-    t.string "expertise"
-    t.text "notes"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "mentors", force: :cascade do |t|
-    t.string "email"
-    t.string "name"
-    t.datetime "date_created"
-    t.string "job_title"
-    t.string "string"
-    t.string "expertise"
-    t.integer "mentee_slots"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "users", force: :cascade do |t|
     t.string "userName"
     t.text "email"
