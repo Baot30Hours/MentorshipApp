@@ -1,1 +1,34 @@
-<%= render 'index' %>
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Timestamp:</strong>
+  <%= @event.timestamp %>
+</p>
+
+<p>
+  <strong>Event date:</strong>
+  <%= @event.event_date %>
+</p>
+
+<p>
+  <strong>Event type:</strong>
+  <%= @event.event_type %>
+</p>
+
+<p>
+  <strong>Meeting method:</strong>
+  <%= @event.meeting_method %>
+</p>
+
+<p>
+  <strong>Notes:</strong>
+  <%= @event.notes %>
+</p>
+
+<p>
+  <strong>Connection:</strong>
+  <%= @event.connection %>
+</p>
+
+<%= link_to 'Edit', edit_event_path(@event) %> |
+<%= link_to 'Back', events_path %>

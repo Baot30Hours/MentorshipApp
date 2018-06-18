@@ -1,52 +1,47 @@
-<%= form_with model: @mentor, local: true do |form| %>
- 
-  <% if @mentor.errors.any? %>
+<%= form_with(model: mentor, local: true) do |form| %>
+  <% if mentor.errors.any? %>
     <div id="error_explanation">
-      <h2>
-        <%= pluralize(@mentor.errors.count, "error") %> prohibited
-        this mentor from being saved:
-      </h2>
+      <h2><%= pluralize(mentor.errors.count, "error") %> prohibited this mentor from being saved:</h2>
+
       <ul>
-        <% @mentor.errors.full_messages.each do |msg| %>
-          <li><%= msg %></li>
-        <% end %>
+      <% mentor.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
       </ul>
     </div>
   <% end %>
-  
-  <p>
-    <%= form.label :name %><br>
-    <%= form.text_field :name %>
-  </p>
-  
-  <p>
-    <%= form.label :email %><br>
-    <%= form.text_field :email %>
-  </p>
 
-  <p>
-    <%= form.label :date_created %><br>
-    <%= form.date_field :date_created %>
-  </p>
+  <div class="field">
+    <%= form.label :email %>
+    <%= form.text_field :email, id: :mentor_email %>
+  </div>
 
-  <p>
-    <%= form.label :job_title %><br>
-    <%= form.text_field :job_title %>
-  </p>
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name, id: :mentor_name %>
+  </div>
 
+  <div class="field">
+    <%= form.label :date_created %>
+    <%= form.datetime_select :date_created, id: :mentor_date_created %>
+  </div>
 
-  <p>
-    <%= form.label :expertise %><br>
-    <%= form.text_area :expertise %>
-  </p>
+  <div class="field">
+    <%= form.label :job_title %>
+    <%= form.text_field :job_title, id: :mentor_job_title %>
+  </div>
 
-  <p>
-    <%= form.label :mentee_slots %><br>
-    <%= form.number_field :mentee_slots %>
-  </p>
- 
-  <p>
+  <div class="field">
+    <%= form.label :expertise %>
+    <%= form.text_field :expertise, id: :mentor_expertise %>
+  </div>
+
+  <div class="field">
+    <%= form.label :mentee_slots %>
+    <%= form.number_field :mentee_slots, id: :mentor_mentee_slots %>
+  </div>
+
+  <div class="actions">
     <%= form.submit %>
-  </p>
- 
+  </div>
 <% end %>
