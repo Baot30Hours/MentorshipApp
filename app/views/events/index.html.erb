@@ -1,21 +1,37 @@
-<h1>Listing events</h1>
+<p id="notice"><%= notice %></p>
 
-<%= link_to '+', new_event_path %> 
-<br><br>
+<h1>Events</h1>
 
-<% @events.each do |event| %>
-    <%= event.date.strftime("%F") %>
-    <br>
-    <%= event.event_type %>
-    <br>
-    <%= event.method %>
-    <br>
-    <%= event.notes %>
-    <br>
-    &ensp;<%= link_to 'Destroy', event_path(event),
-    method: :delete,
-    data: { confirm: 'Are you sure?' } %>
-    <%= link_to 'Edit', edit_event_path(event)%>
-    <br><br>
-<% end %>
+<table>
+  <thead>
+    <tr>
+      <th>Timestamp</th>
+      <th>Event date</th>
+      <th>Event type</th>
+      <th>Meeting method</th>
+      <th>Notes</th>
+      <th>Connection</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
 
+  <tbody>
+    <% @events.each do |event| %>
+      <tr>
+        <td><%= event.timestamp %></td>
+        <td><%= event.event_date %></td>
+        <td><%= event.event_type %></td>
+        <td><%= event.meeting_method %></td>
+        <td><%= event.notes %></td>
+        <td><%= event.connection %></td>
+        <td><%= link_to 'Show', event %></td>
+        <td><%= link_to 'Edit', edit_event_path(event) %></td>
+        <td><%= link_to 'Destroy', event, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Event', new_event_path %>

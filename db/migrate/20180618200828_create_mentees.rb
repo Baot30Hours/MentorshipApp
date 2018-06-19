@@ -5,7 +5,6 @@ class CreateMentees < ActiveRecord::Migration[5.1]
       t.string :name
       t.datetime :date_created
       t.string :job_title
-      t.string :string
       t.string :expertise
       t.text :notes
 

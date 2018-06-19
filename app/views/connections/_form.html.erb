@@ -1,0 +1,40 @@
+<%= form_with(model: connection, local: true) do |form| %>
+  <% if connection.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(connection.errors.count, "error") %> prohibited this connection from being saved:</h2>
+
+      <ul>
+      <% connection.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :date_created %>
+    <%= form.datetime_select :date_created, id: :connection_date_created %>
+  </div>
+
+  <div class="field">
+    <%= form.label :status %>
+    <%= form.select :status, Connection.statuses.keys%>
+    <!--%= form.number_field :status, id: :connection_status %-->
+  </div>
+
+  <div class="field">
+    <%= form.label :mentee_id %>
+    <%= form.collection_select :mentee_id, Mentee.all, :id, :name, :include_blank => true %>
+    <!--%= form.text_field :mentee_id, id: :connection_mentee_id %-->
+  </div>
+
+  <div class="field">
+    <%= form.label :mentor_id %>
+    <%= form.collection_select :mentor_id, Mentor.all, :id, :name, :include_blank => true %>
+    <!--%= form.text_field :mentor_id, id: :connection_mentor_id %-->
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

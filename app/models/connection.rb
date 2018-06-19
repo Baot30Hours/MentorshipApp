@@ -1,4 +1,6 @@
 class Connection < ApplicationRecord
-  belongs_to :Mentee
-  belongs_to :Mentor
+  belongs_to :mentee
+  belongs_to :mentor
+  has_many :events
+  enum status: [:active, :closed]
 end

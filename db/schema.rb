@@ -10,29 +10,32 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180507065830) do
+ActiveRecord::Schema.define(version: 20180618200959) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "connections", force: :cascade do |t|
-    t.bigint "Mentee_id"
-    t.bigint "Mentor_id"
+    t.datetime "date_created"
+    t.integer "status"
+    t.bigint "mentee_id"
+    t.bigint "mentor_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["Mentee_id"], name: "index_connections_on_Mentee_id"
-    t.index ["Mentor_id"], name: "index_connections_on_Mentor_id"
+    t.index ["mentee_id"], name: "index_connections_on_mentee_id"
+    t.index ["mentor_id"], name: "index_connections_on_mentor_id"
   end
 
   create_table "events", force: :cascade do |t|
-    t.bigint "Connection_id"
-    t.string "event_type"
-    t.string "method"
-    t.datetime "date"
+    t.datetime "timestamp"
+    t.datetime "event_date"
+    t.integer "event_type"
+    t.integer "meeting_method"
     t.text "notes"
+    t.bigint "connection_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["Connection_id"], name: "index_events_on_Connection_id"
+    t.index ["connection_id"], name: "index_events_on_connection_id"
   end
 
   create_table "mentees", force: :cascade do |t|
@@ -40,7 +43,6 @@ ActiveRecord::Schema.define(version: 20180507065830) do
     t.string "name"
     t.datetime "date_created"
     t.string "job_title"
-    t.string "string"
     t.string "expertise"
     t.text "notes"
     t.datetime "created_at", null: false
@@ -52,7 +54,6 @@ ActiveRecord::Schema.define(version: 20180507065830) do
     t.string "name"
     t.datetime "date_created"
     t.string "job_title"
-    t.string "string"
     t.string "expertise"
     t.integer "mentee_slots"
     t.datetime "created_at", null: false
@@ -68,4 +69,7 @@ ActiveRecord::Schema.define(version: 20180507065830) do
     t.string "remember_digest"
   end
 
+  add_foreign_key "connections", "mentees"
+  add_foreign_key "connections", "mentors"
+  add_foreign_key "events", "connections"
 end

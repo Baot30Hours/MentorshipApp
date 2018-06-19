@@ -1,51 +1,47 @@
-<%= form_with model: @mentee, local: true do |form| %>
-  <% if @mentee.errors.any? %>
+<%= form_with(model: mentee, local: true) do |form| %>
+  <% if mentee.errors.any? %>
     <div id="error_explanation">
-      <h2>
-        <%= pluralize(@mentee.errors.count, "error") %> prohibited
-        this mentee from being saved:
-      </h2>
+      <h2><%= pluralize(mentee.errors.count, "error") %> prohibited this mentee from being saved:</h2>
+
       <ul>
-        <% @mentee.
-      errors.full_messages.each do |msg| %>
-          <li><%= msg %></li>
-        <% end %>
+      <% mentee.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
       </ul>
     </div>
   <% end %>
 
-  <p>
-    <%= form.label :name %><br>
-    <%= form.text_field :name %>
-  </p>
- 
-  <p>
-    <%= form.label :email %><br>
-    <%= form.text_field :email %>
-  </p>
+  <div class="field">
+    <%= form.label :email %>
+    <%= form.text_field :email, id: :mentee_email %>
+  </div>
 
-  <p>
-    <%= form.label :date_created %><br>
-    <%= form.date_field :date_created %>
-  </p>
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name, id: :mentee_name %>
+  </div>
 
-  <p>
-    <%= form.label :job_title %><br>
-    <%= form.text_field :job_title %>
-  </p>
+  <div class="field">
+    <%= form.label :date_created %>
+    <%= form.datetime_select :date_created, id: :mentee_date_created %>
+  </div>
 
-  <p>
-    <%= form.label :expertise %><br>
-    <%= form.text_area :expertise %>
-  </p>
+  <div class="field">
+    <%= form.label :job_title %>
+    <%= form.text_field :job_title, id: :mentee_job_title %>
+  </div>
 
-  <p>
-    <%= form.label :notes %><br>
-    <%= form.text_area :notes %>
-  </p>
- 
-  <p>
+  <div class="field">
+    <%= form.label :expertise %>
+    <%= form.text_field :expertise, id: :mentee_expertise %>
+  </div>
+
+  <div class="field">
+    <%= form.label :notes %>
+    <%= form.text_area :notes, id: :mentee_notes %>
+  </div>
+
+  <div class="actions">
     <%= form.submit %>
-  </p>
- 
+  </div>
 <% end %>
