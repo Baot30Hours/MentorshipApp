@@ -9,12 +9,18 @@
   </head>
  
   <body>
+    <header class="navbar navbar-fixed-top navbar-inverse">
+      <div class="container">
+          <% if logged_in? %>
+            <%= render 'shared/navigation' %>
+          <% else %>
+            <%= render 'shared/navigation_guest' %>
+          <% end %>  
+      </div>
+    </header>
+
+  
     <div class="container">
-	<% if logged_in? %>
-	    <%= render 'shared/navigation' %>
-	<% else %>
-       	    <%= render 'shared/navigation_guest' %>
-	<% end %>
       <% flash.each do |message_type, message| %>
         <div class="alert alert-<%= message_type %>"><%= message %></div>
       <% end %>
