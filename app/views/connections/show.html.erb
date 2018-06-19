@@ -12,12 +12,12 @@
 
 <p>
   <strong>Mentee:</strong>
-  <%= @connection.mentee %>
+  <%= @connection.mentee.name %>
 </p>
 
 <p>
   <strong>Mentor:</strong>
-  <%= @connection.mentor %>
+  <%= @connection.mentor.name %>
 </p>
 
 <%= link_to 'Edit', edit_connection_path(@connection) %> |

@@ -10,10 +10,55 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180507065830) do
+ActiveRecord::Schema.define(version: 20180618200959) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "connections", force: :cascade do |t|
+    t.datetime "date_created"
+    t.integer "status"
+    t.bigint "mentee_id"
+    t.bigint "mentor_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["mentee_id"], name: "index_connections_on_mentee_id"
+    t.index ["mentor_id"], name: "index_connections_on_mentor_id"
+  end
+
+  create_table "events", force: :cascade do |t|
+    t.datetime "timestamp"
+    t.datetime "event_date"
+    t.integer "event_type"
+    t.integer "meeting_method"
+    t.text "notes"
+    t.bigint "connection_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["connection_id"], name: "index_events_on_connection_id"
+  end
+
+  create_table "mentees", force: :cascade do |t|
+    t.string "email"
+    t.string "name"
+    t.datetime "date_created"
+    t.string "job_title"
+    t.string "expertise"
+    t.text "notes"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "mentors", force: :cascade do |t|
+    t.string "email"
+    t.string "name"
+    t.datetime "date_created"
+    t.string "job_title"
+    t.string "expertise"
+    t.integer "mentee_slots"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "userName"
@@ -24,4 +69,7 @@ ActiveRecord::Schema.define(version: 20180507065830) do
     t.string "remember_digest"
   end
 
+  add_foreign_key "connections", "mentees"
+  add_foreign_key "connections", "mentors"
+  add_foreign_key "events", "connections"
 end
