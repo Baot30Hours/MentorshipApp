@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   resources :connections
   resources :events
   resources :users
+  resources :sessions
 
   root 'welcome#index'
 end
