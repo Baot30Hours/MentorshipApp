@@ -11,34 +11,29 @@
     </div>
   <% end %>
 
-  <div class="field">
+  <div class="field form-group">
     <%= form.label :name %>
-    <%= form.text_field :name, id: :mentee_name %>
+    <%= form.text_field :name, {id: :mentee_name, class: :"form-control"} %>
   </div>
 
-  <div class="field">
+  <div class="field form-group">
     <%= form.label :email %>
-    <%= form.text_field :email, id: :mentee_email %>
+    <%= form.text_field :email, {id: :mentee_email, class: :"form-control"} %>
   </div>
 
-  <div class="field">
-    <%= form.label :date_created %>
-    <%= form.datetime_select :date_created, id: :mentee_date_created %>
-  </div>
-
-  <div class="field">
+  <div class="field form-group">
     <%= form.label :job_title %>
-    <%= form.text_field :job_title, id: :mentee_job_title %>
+    <%= form.text_field :job_title, {id: :mentee_job_title, class: :"form-control"} %>
   </div>
 
-  <div class="field">
+  <div class="field form-group">
     <%= form.label :expertise %>
-    <%= form.text_field :expertise, id: :mentee_expertise %>
+    <%= form.text_field :expertise, {id: :mentee_expertise, class: :"form-control"} %>
   </div>
 
-  <div class="field">
+  <div class="field form-group">
     <%= form.label :notes %>
-    <%= form.text_area :notes, id: :mentee_notes %>
+    <%= form.text_area :notes, {id: :mentee_notes, class: :"form-control"} %>
   </div>
 
   <div class="actions">
