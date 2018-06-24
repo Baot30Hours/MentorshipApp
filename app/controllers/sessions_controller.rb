@@ -18,6 +18,10 @@ class SessionsController < ApplicationController
   end
 
   def destroy
+    logger.debug "start destroy session"
     log_out
+    cookies.delete :user_id
+    cookies.delete :_mentorship_app_session
+    render 'welcome/index'
   end
 end
