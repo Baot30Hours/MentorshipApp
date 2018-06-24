@@ -1,9 +1,14 @@
 <% provide(:title, "Log in") %>
-<h1>Log in</h1>
+
+<h1>Log in (new)</h1>
 
 <div class="row">
   <div class="col-md-6 col-md-offset-3">
-    <%= form_for(:session, url: login_path) do |f| %>
+    <% flash.each do |key, value| %>
+      <%= content_tag :div, value, class: "flash #{key}" %>
+    <% end %>
+
+    <%= form_for(:session, url: '/users/login') do |f| %>
 
       <%= f.label :email %>
       <%= f.email_field :email, class: 'form-control' %>
@@ -14,6 +19,6 @@
       <%= f.submit "Log in", class: "btn btn-primary" %>
     <% end %>
 
-    <p>New user? <%= link_to "Sign up now!", signup_path %></p>
+    <p>New user? <%= link_to "Sign up now!", '/users/signup' %></p>
   </div>
 </div>
