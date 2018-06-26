@@ -1,4 +1,4 @@
-<p id="notice"><%= notice %></p>
+q<p id="notice"><%= notice %></p>
 
 <p>
   <strong>Email:</strong>
@@ -29,6 +29,8 @@
   <strong>Mentee slots:</strong>
   <%= @mentor.mentee_slots %>
 </p>
+
+<%= render 'mentees_list', mentor: @mentor %>
 
 <%= link_to 'Edit', edit_mentor_path(@mentor) %> |
 <%= link_to 'Back', mentors_path %>
