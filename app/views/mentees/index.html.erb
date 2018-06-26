@@ -2,15 +2,14 @@
 
 <h1>Mentees</h1>
 
-<table>
+<table class="table">
   <thead>
     <tr>
-      <th>Email</th>
-      <th>Name</th>
-      <th>Date created</th>
-      <th>Job title</th>
-      <th>Expertise</th>
-      <th>Notes</th>
+      <th scope="col">Name</th>
+      <th scope="col">Email</th>
+      <th scope="col">Job title</th>
+      <th scope="col">Expertise</th>
+      <th scope="col">Notes</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -18,9 +17,8 @@
   <tbody>
     <% @mentees.each do |mentee| %>
       <tr>
-        <td><%= mentee.email %></td>
         <td><%= mentee.name %></td>
-        <td><%= mentee.date_created %></td>
+        <td><%= mentee.email %></td>
         <td><%= mentee.job_title %></td>
         <td><%= mentee.expertise %></td>
         <td><%= mentee.notes %></td>
@@ -34,4 +32,4 @@
 
 <br>
 
-<%= link_to 'New Mentee', new_mentee_path %>
+<%= link_to 'New Mentee', new_mentee_path, :class => 'btn btn-default', :role => 'button' %>
