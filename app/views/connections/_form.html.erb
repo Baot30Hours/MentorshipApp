@@ -11,11 +11,13 @@
     </div>
   <% end %>
 
+  <% if @connection.persisted? %>
     <div class="field">
       <%= form.label :status %>
       <%= form.select :status, Connection.statuses.keys%>
       <!--%= form.number_field :status, id: :connection_status %-->
     </div>
+  <% end %>
 
   <div class="field">
     <%= form.label :mentee_id %>

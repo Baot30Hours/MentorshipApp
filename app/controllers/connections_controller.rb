@@ -24,7 +24,7 @@ class ConnectionsController < ApplicationController
   # POST /connections
   # POST /connections.json
   def create
-    @connection = Connection.new(connection_params)
+    @connection = Connection.new(connection_params_create.merge(status: Connection.statuses['active']))
 
     respond_to do |format|
       if @connection.save
@@ -41,7 +41,7 @@ class ConnectionsController < ApplicationController
   # PATCH/PUT /connections/1.json
   def update
     respond_to do |format|
-      if @connection.update(connection_params)
+      if @connection.update(connection_params_update)
         format.html { redirect_to @connection, notice: 'Connection was successfully updated.' }
         format.json { render :show, status: :ok, location: @connection }
       else
@@ -68,7 +68,11 @@ class ConnectionsController < ApplicationController
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
-    def connection_params
+    def connection_params_update
       params.require(:connection).permit( :status, :mentee_id, :mentor_id)
+    end
+
+    def connection_params_create
+      params.require(:connection).permit( :status, :mentee_id, :mentor_id).merge(status: status)
     end
 end
