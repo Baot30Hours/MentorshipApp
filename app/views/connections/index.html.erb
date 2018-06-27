@@ -16,7 +16,7 @@
   <tbody>
     <% @connections.each do |connection| %>
       <tr>
-        <td><%= connection.date_created %></td>
+        <td><%= connection.created_at %></td>
         <td><%= connection.status %></td>
         <td><%= connection.mentee.name %></td>
         <td><%= connection.mentor.name %></td>
