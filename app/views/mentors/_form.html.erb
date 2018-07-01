@@ -12,31 +12,37 @@
   <% end %>
 
   <div class="field form-group">
-    <%= form.label :name %>
-    <%= form.text_field :name, {id: :mentor_name, class: :"form-control", place_holder: :Name}%>
+    <%= form.label :name, class: :"form-label" %>
+    <%= form.text_field :name, {id: :mentor_name, class: :"form-control", placeholder: "Name"}%>
   </div>
 
   <div class="field form-group">
-    <%= form.label :email %>
-    <%= form.text_field :email, {id: :mentor_email, class: :"form-control"} %>
+    <%= form.label :email, class: :"form-label" %>
+    <%= form.text_field :email, {id: :mentor_email, class: :"form-control", placeholder: "mentor@google.com"} %>
   </div>
 
   <div class="field form-group">
-    <%= form.label :job_title %>
-    <%= form.text_field :job_title, {id: :mentor_job_title, class: :"form-control" }%>
+    <%= form.label :company, class: :"form-label" %>
+    <%= form.text_field :company, {id: :mentor_company, class: :"form-control", placeholder: "Google"} %>
   </div>
 
   <div class="field form-group">
-    <%= form.label :expertise %>
-    <%= form.text_field :expertise, {id: :mentor_expertise, class: :"form-control"} %>
+    <%= form.label :job_title, class: :"form-label" %>
+    <%= form.text_field :job_title, {id: :mentor_job_title, class: :"form-control", placeholder: "senior frontend developer" }%>
   </div>
 
   <div class="field form-group">
-    <%= form.label :mentee_slots %>
+    <%= form.label :expertise, class: :"form-label" %>
+    <%= form.text_field :expertise, {id: :mentor_expertise, class: :"form-control", placeholder: "Angular 2, Javascript"} %>
+  </div>
+
+  <div class="field form-group">
+    <%= form.label :mentee_slots, class: :"form-label" %>
     <%= form.number_field :mentee_slots, {id: :mentor_mentee_slots, class: :"form-control"} %>
   </div>
 
-  <div class="actions">
-    <%= form.submit %>
+  <div class="actions submit-btn">
+    <%= form.submit "Create", {class: "btn btn-default"}%>
   </div>
+
 <% end %>
