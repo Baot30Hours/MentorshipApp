@@ -12,31 +12,36 @@
   <% end %>
 
   <div class="field form-group">
-    <%= form.label :name %>
-    <%= form.text_field :name, {id: :mentee_name, class: :"form-control"} %>
+    <%= form.label :name, class: :"form-label" %>
+    <%= form.text_field :name, {id: :mentee_name, class: :"form-control", placeholder: "Name"} %>
   </div>
 
   <div class="field form-group">
-    <%= form.label :email %>
-    <%= form.text_field :email, {id: :mentee_email, class: :"form-control"} %>
+    <%= form.label :email, class: :"form-label" %>
+    <%= form.text_field :email, {id: :mentee_email, class: :"form-control", placeholder: "mentee@google.com"} %>
   </div>
 
   <div class="field form-group">
-    <%= form.label :job_title %>
-    <%= form.text_field :job_title, {id: :mentee_job_title, class: :"form-control"} %>
+    <%= form.label :company, class: :"form-label" %>
+    <%= form.text_field :company, {id: :mentee_company, class: :"form-control", placeholder: "Google"} %>
   </div>
 
   <div class="field form-group">
-    <%= form.label :expertise %>
-    <%= form.text_field :expertise, {id: :mentee_expertise, class: :"form-control"} %>
+    <%= form.label :job_title, class: :"form-label" %>
+    <%= form.text_field :job_title, {id: :mentee_job_title, class: :"form-control", placeholder: "Data Engineer"} %>
   </div>
 
   <div class="field form-group">
-    <%= form.label :notes %>
-    <%= form.text_area :notes, {id: :mentee_notes, class: :"form-control"} %>
+    <%= form.label :expertise, class: :"form-label" %>
+    <%= form.text_field :expertise, {id: :mentee_expertise, class: :"form-control", placeholder: "python pandas, SQL"} %>
   </div>
 
-  <div class="actions">
-    <%= form.submit %>
+  <div class="field form-group">
+    <%= form.label :notes, class: :"form-label" %>
+    <%= form.text_area :notes, {id: :mentee_notes, class: :"form-control", placeholder: "Name would like to make a career shift and become an iOS developer"} %>
+  </div>
+
+  <div class="actions submit-btn">
+    <%= form.submit "Create", {class: "btn btn-default"}%>
   </div>
 <% end %>
