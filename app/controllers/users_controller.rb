@@ -1,9 +1,5 @@
 class UsersController < ApplicationController
 
-  def index
-    @users = User.all
-  end
-
   def login
     # Render the login page
   end
@@ -36,43 +32,24 @@ class UsersController < ApplicationController
     render 'welcome/index'
   end 
 
-  def show
-    @user = User.find(params[:id])
-  end
-
   def new
+    # Render sign up form
     @user = User.new
-  end
-
-  def edit
-    @user = User.find(params[:id])
   end
 
   def create
     @user = User.new(user_params)
  
     if @user.save
-      redirect_to @user
+
+      log_in @user
+      remember @user
+
+      redirect_to :controller => 'welcome', :action => 'index'
+
     else
       render 'new'
     end
-  end
-
-  def update
-    @user = User.find(params[:id])
- 
-    if @user.update(user_params)
-      redirect_to @user
-    else
-      render 'edit'
-    end
-  end
-
-  def destroy
-    @user = User.find(params[:id])
-    @user.destroy
- 
-    redirect_to users_path
   end
 
   private

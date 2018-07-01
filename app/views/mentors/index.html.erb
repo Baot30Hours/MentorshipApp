@@ -18,14 +18,14 @@
     <tbody>
       <% @mentors.each do |mentor| %>
         <tr>
-          <td><%= mentor.name %></td>
+          <td><%= link_to mentor.name, mentor %></td>
           <td><%= mentor.email %></td>
           <td><%= mentor.job_title %></td>
           <td><%= mentor.expertise %></td>
           <td><%= mentor.mentee_slots %></td>
-          <td><%= link_to 'Show', mentor, :class => 'btn btn-default', :role => 'button' %>
+          <td>
               <%= link_to 'Edit', edit_mentor_path(mentor), :class => 'btn btn-default', :role => 'button' %>
-              <%= link_to 'Destroy', mentor, method: :delete, data: { confirm: 'Are you sure?' }, :class => 'btn btn-default', :role => 'button' %>
+              <%= link_to 'Remove', mentor, method: :delete, data: { confirm: 'Are you sure?' }, :class => 'btn btn-default', :role => 'button' %>
           </td>
         </tr>
       <% end %>
