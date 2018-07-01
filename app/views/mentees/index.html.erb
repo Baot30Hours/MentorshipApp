@@ -17,15 +17,14 @@
   <tbody>
     <% @mentees.each do |mentee| %>
       <tr>
-        <td><%= mentee.name %></td>
+        <td><%= link_to mentee.name, mentee %></td>
         <td><%= mentee.email %></td>
         <td><%= mentee.job_title %></td>
         <td><%= mentee.expertise %></td>
         <td><%= mentee.notes %></td>
         <td>
-          <%= link_to 'Show', mentee, :class => 'btn btn-default', :role => 'button' %>
           <%= link_to 'Edit', edit_mentee_path(mentee), :class => 'btn btn-default', :role => 'button'  %>
-          <%= link_to 'Destroy', mentee, method: :delete, data: { confirm: 'Are you sure?' }, :class => 'btn btn-default', :role => 'button' %>
+          <%= link_to 'Remove', mentee, method: :delete, data: { confirm: 'Are you sure?' }, :class => 'btn btn-default', :role => 'button' %>
         </td>
       </tr>
     <% end %>
