@@ -30,5 +30,7 @@
   <%= @mentee.notes %>
 </p>
 
+<%= render 'mentors_list', mentor: @mentee %>
+
 <%= link_to 'Edit', edit_mentee_path(@mentee) %> |
 <%= link_to 'Back', mentees_path %>

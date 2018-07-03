@@ -30,5 +30,7 @@
   <%= @mentor.mentee_slots %>
 </p>
 
+<%= render 'mentees_list', mentor: @mentor %>
+
 <%= link_to 'Edit', edit_mentor_path(@mentor) %> |
 <%= link_to 'Back', mentors_path %>
