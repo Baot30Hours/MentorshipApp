@@ -1,44 +1,51 @@
 <%= form_with(model: mentee, local: true) do |form| %>
-  <% if mentee.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(mentee.errors.count, "error") %> prohibited this mentee from being saved:</h2>
-
-      <ul>
-      <% mentee.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
 
   <div class="field form-group">
     <%= form.label :name, class: :"form-label" %>
     <%= form.text_field :name, {id: :mentee_name, class: :"form-control", placeholder: "Name"} %>
+    <% if mentee.errors[:name].present? %>
+      <span class="error-message"><%= mentee.errors[:name].join(", ") %></span>
+    <% end %>
   </div>
 
   <div class="field form-group">
     <%= form.label :email, class: :"form-label" %>
     <%= form.text_field :email, {id: :mentee_email, class: :"form-control", placeholder: "mentee@google.com"} %>
+    <% if mentee.errors[:email].present? %>
+      <span class="error-message"><%= mentee.errors[:email].join(", ") %></span>
+    <% end %>
   </div>
 
   <div class="field form-group">
     <%= form.label :company, class: :"form-label" %>
     <%= form.text_field :company, {id: :mentee_company, class: :"form-control", placeholder: "Google"} %>
+    <% if mentee.errors[:company].present? %>
+      <span class="error-message"><%= mentee.errors[:company].join(", ") %></span>
+    <% end %>
   </div>
 
   <div class="field form-group">
     <%= form.label :job_title, class: :"form-label" %>
     <%= form.text_field :job_title, {id: :mentee_job_title, class: :"form-control", placeholder: "Data Engineer"} %>
+    <% if mentee.errors[:job_title].present? %>
+      <span class="error-message"><%= mentee.errors[:job_title].join(", ") %></span>
+    <% end %>
   </div>
 
   <div class="field form-group">
     <%= form.label :expertise, class: :"form-label" %>
     <%= form.text_field :expertise, {id: :mentee_expertise, class: :"form-control", placeholder: "python pandas, SQL"} %>
+    <% if mentee.errors[:expertise].present? %>
+      <span class="error-message"><%= mentee.errors[:expertise].join(", ") %></span>
+    <% end %>
   </div>
 
   <div class="field form-group">
     <%= form.label :notes, class: :"form-label" %>
     <%= form.text_area :notes, {id: :mentee_notes, class: :"form-control", placeholder: "Name would like to make a career shift and become an iOS developer"} %>
+    <% if mentee.errors[:notes].present? %>
+      <span class="error-message"><%= mentee.errors[:notes].join(", ") %></span>
+    <% end %>
   </div>
 
   <div class="actions submit-btn">
