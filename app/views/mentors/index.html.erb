@@ -1,30 +1,38 @@
-<h1>Listing mentors</h1>
+<p id="notice"><%= notice %></p>
 
-<%= link_to 'New mentor', new_mentor_path %> 
-<table>
-  <tr>
-    <th>Name</th>
-    <th>Email</th>
-    <th>Date Created</th>
-    <th>Job Title</th>
-    <th>Expertise</th>
-    <th>Mentee Slots</th>
-  </tr>
- 
-  <% @mentors.each do |mentor| %>
-    <tr>
-      <td><%= mentor.name %></td>
-      <td><%= mentor.email %></td>
-      <td><%= mentor.date_created %></td>
-      <td><%= mentor.job_title %></td>
-      <td><%= mentor.expertise %></td>
-      <td><%= mentor.mentee_slots %></td>
-      
-      <td><%= link_to 'Show', mentor_path(mentor) %></td>
-      <td><%= link_to 'Edit', edit_mentor_path(mentor) %></td>
-      <td><%= link_to 'Destroy', mentor_path(mentor),
-              method: :delete,
-              data: { confirm: 'Are you sure?' } %></td>
-    </tr>
-  <% end %>
-</table>
+<h1>Mentors</h1>
+
+<div class="table-responsive">
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Name</th>
+        <th scope="col">Email</th>
+        <th scope="col">Job title</th>
+        <th scope="col">Expertise</th>
+        <th scope="col">Mentee slots</th>
+        <th scope="col"></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @mentors.each do |mentor| %>
+        <tr>
+          <td><%= link_to mentor.name, mentor %></td>
+          <td><%= mentor.email %></td>
+          <td><%= mentor.job_title %></td>
+          <td><%= mentor.expertise %></td>
+          <td><%= mentor.mentee_slots %></td>
+          <td>
+              <%= link_to 'Edit', edit_mentor_path(mentor), :class => 'btn btn-default', :role => 'button' %>
+              <%= link_to 'Remove', mentor, method: :delete, data: { confirm: 'Are you sure?' }, :class => 'btn btn-default', :role => 'button' %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+<br>
+
+
+<%= link_to 'New Mentor', new_mentor_path, :class => 'btn btn-default', :role => 'button' %> 

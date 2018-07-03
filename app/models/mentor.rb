@@ -2,6 +2,7 @@ class Mentor < ApplicationRecord
   has_many :connections
   has_many :mentees, through: :connections
 
-  validates :name, presence: true,
-             length: { minimum: 5 }
+  def has_max_mentees
+      self.mentees.count >= self.mentee_slots
+   end
 end

@@ -1,30 +1,36 @@
-<h1>Listing mentees</h1>
+<p id="notice"><%= notice %></p>
 
-<%= link_to 'New mentee', new_mentee_path %> 
-<table>
-  <tr>
-    <th>Name</th>
-    <th>Email</th>
-    <th>Date Created</th>
-    <th>Job Title</th>
-    <th>Expertise</th>
-    <th>Notes</th>
-  </tr>
- 
-  <% @mentees.each do |mentee| %>
+<h1>Mentees</h1>
+
+<table class="table">
+  <thead>
     <tr>
-      <td><%= mentee.name %></td>
-      <td><%= mentee.email %></td>
-      <td><%= mentee.date_created %></td>
-      <td><%= mentee.job_title %></td>
-      <td><%= mentee.expertise %></td>
-      <td><%= mentee.notes %></td>
-      
-      <td><%= link_to 'Show', mentee_path(mentee) %></td>
-      <td><%= link_to 'Edit', edit_mentee_path(mentee) %></td>
-      <td><%= link_to 'Destroy', mentee_path(mentee),
-              method: :delete,
-              data: { confirm: 'Are you sure?' } %></td>
+      <th scope="col">Name</th>
+      <th scope="col">Email</th>
+      <th scope="col">Job title</th>
+      <th scope="col">Expertise</th>
+      <th scope="col">Notes</th>
+      <th scope="col"></th>
     </tr>
-  <% end %>
+  </thead>
+
+  <tbody>
+    <% @mentees.each do |mentee| %>
+      <tr>
+        <td><%= link_to mentee.name, mentee %></td>
+        <td><%= mentee.email %></td>
+        <td><%= mentee.job_title %></td>
+        <td><%= mentee.expertise %></td>
+        <td><%= mentee.notes %></td>
+        <td>
+          <%= link_to 'Edit', edit_mentee_path(mentee), :class => 'btn btn-default', :role => 'button'  %>
+          <%= link_to 'Remove', mentee, method: :delete, data: { confirm: 'Are you sure?' }, :class => 'btn btn-default', :role => 'button' %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
 </table>
+
+<br>
+
+<%= link_to 'New Mentee', new_mentee_path, :class => 'btn btn-default', :role => 'button' %>

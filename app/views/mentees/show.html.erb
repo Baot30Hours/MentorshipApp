@@ -1,20 +1,22 @@
-<p>
-  <strong>Nems:</strong>
-  <%= @mentee.name %>
-</p>
- 
+<p id="notice"><%= notice %></p>
+
 <p>
   <strong>Email:</strong>
   <%= @mentee.email %>
 </p>
 
 <p>
-  <strong>Date Created:</strong>
+  <strong>Name:</strong>
+  <%= @mentee.name %>
+</p>
+
+<p>
+  <strong>Date created:</strong>
   <%= @mentee.date_created %>
 </p>
 
 <p>
-  <strong>Job Title:</strong>
+  <strong>Job title:</strong>
   <%= @mentee.job_title %>
 </p>
 
@@ -27,5 +29,8 @@
   <strong>Notes:</strong>
   <%= @mentee.notes %>
 </p>
+
+<%= render 'mentors_list', mentor: @mentee %>
+
 <%= link_to 'Edit', edit_mentee_path(@mentee) %> |
 <%= link_to 'Back', mentees_path %>

@@ -3,13 +3,26 @@
   <head>
     <title>MentorshipApp</title>
     <%= csrf_meta_tags %>
-
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
-
+ 
   <body>
+    <header class="navbar navbar-static-top navbar-inverse">
+      <div class="container">
+          <% if logged_in? %>
+            <%= render 'shared/navigation' %>
+          <% else %>
+            <%= render 'shared/navigation_guest' %>
+          <% end %>  
+      </div>
+    </header>
+
     <div class="container">
+      <%= yield %>  
+    </div>
+    <!-- <div class="container">
       <% flash.each do |message_type, message| %>
         <div class="alert alert-<%= message_type %>"><%= message %></div>
       <% end %>
@@ -19,6 +32,6 @@
 
   <% flash.each do |key, value| %>
     <div class="flash <%= key %>"><%= value %></div>
-  <% end %>
+  <% end %> -->
 
 </html>
