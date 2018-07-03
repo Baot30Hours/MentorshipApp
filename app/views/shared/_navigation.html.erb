@@ -1,7 +1,7 @@
 <nav>
   <ul class="nav navbar-nav navbar-right">
-  	  <li><%= link_to 'Home', {controller: 'welcome'}, {:class => 'navbar-brand'}%></li>
-	  <li><%= link_to 'Mentors', {controller: 'mentors'}, {:class => 'navbar-brand'}%></li>
-	  <li><%= link_to 'Mentees', {controller: 'mentees'}, {:class => 'navbar-brand'}%></li>  
-	  <li><%= link_to 'Log Out', '/users/logout', { :class => 'navbar-brand'}%></li>
+  	<li><%= link_to 'Home', {controller: 'welcome'}%></li>
+	  <li><%= link_to 'Mentors', {controller: 'mentors'}%></li>
+	  <li><%= link_to 'Mentees', {controller: 'mentees'}%></li>  
+	  <li><%= link_to 'Log Out', '/users/logout'%></li>
 </nav>
