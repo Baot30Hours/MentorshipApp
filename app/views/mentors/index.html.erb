@@ -16,18 +16,25 @@
     </thead>
 
     <tbody>
-      <% @mentors.each do |mentor| %>
-        <tr>
-          <td><%= link_to mentor.name, mentor %></td>
-          <td><%= mentor.email %></td>
-          <td><%= mentor.job_title %></td>
-          <td><%= mentor.expertise %></td>
-          <td><%= mentor.mentee_slots %></td>
-          <td>
-              <%= link_to 'Edit', edit_mentor_path(mentor), :class => 'btn btn-default', :role => 'button' %>
-              <%= link_to 'Remove', mentor, method: :delete, data: { confirm: 'Are you sure?' }, :class => 'btn btn-default', :role => 'button' %>
-          </td>
-        </tr>
+      <% if logged_in? %>
+        <% @mentors.each do |mentor| %>
+          <tr>
+            <td><%= link_to mentor.name, mentor %></td>
+            <td><%= mentor.email %></td>
+            <td><%= mentor.job_title %></td>
+            <td><%= mentor.expertise %></td>
+            <td><%= mentor.mentee_slots %></td>
+            <td>
+                <%= link_to 'Edit', edit_mentor_path(mentor), :class => 'btn btn-default', :role => 'button' %>
+                <%= link_to 'Remove', mentor, method: :delete, data: { confirm: 'Are you sure?' }, :class => 'btn btn-default', :role => 'button' %>
+            </td>
+          </tr>
+        <% end %>
+      <% else %>
+        <% flash[:danger] = "You must log in first" %>
+        <script type="text/javascript">
+            window.location.href="users/login"
+        </script>
       <% end %>
     </tbody>
   </table>
