@@ -21,6 +21,7 @@
 
     <div class="container">
       <%= yield %>  
+      <%= yield :form_errors %>
     </div>
     <!-- <div class="container">
       <% flash.each do |message_type, message| %>
