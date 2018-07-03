@@ -14,16 +14,23 @@
   </thead>
 
   <tbody>
-    <% @connections.each do |connection| %>
-      <tr>
-        <td><%= connection.date_created %></td>
-        <td><%= connection.status %></td>
-        <td><%= connection.mentee.name %></td>
-        <td><%= connection.mentor.name %></td>
-        <td><%= link_to 'Show', connection %></td>
-        <td><%= link_to 'Edit', edit_connection_path(connection) %></td>
-        <td><%= link_to 'Destroy', connection, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+    <% if logged_in? %>
+      <% @connections.each do |connection| %>
+        <tr>
+          <td><%= connection.date_created %></td>
+          <td><%= connection.status %></td>
+          <td><%= connection.mentee.name %></td>
+          <td><%= connection.mentor.name %></td>
+          <td><%= link_to 'Show', connection %></td>
+          <td><%= link_to 'Edit', edit_connection_path(connection) %></td>
+          <td><%= link_to 'Destroy', connection, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+      <% end %>
+    <% else %>
+      <% flash[:danger] = "You must log in first" %>
+      <script type="text/javascript">
+           window.location.href="users/login"
+      </script>
     <% end %>
   </tbody>
 </table>
