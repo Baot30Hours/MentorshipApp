@@ -11,16 +11,13 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :date_created %>
-    <%= form.datetime_select :date_created, id: :connection_date_created %>
-  </div>
-
-  <div class="field">
-    <%= form.label :status %>
-    <%= form.select :status, Connection.statuses.keys%>
-    <!--%= form.number_field :status, id: :connection_status %-->
-  </div>
+  <% if @connection.persisted? %>
+    <div class="field">
+      <%= form.label :status %>
+      <%= form.select :status, Connection.statuses.keys%>
+      <!--%= form.number_field :status, id: :connection_status %-->
+    </div>
+  <% end %>
 
   <div class="field">
     <%= form.label :mentee_id %>

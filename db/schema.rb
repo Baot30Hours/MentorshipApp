@@ -16,7 +16,6 @@ ActiveRecord::Schema.define(version: 20180701113555) do
   enable_extension "plpgsql"
 
   create_table "connections", force: :cascade do |t|
-    t.datetime "date_created"
     t.integer "status"
     t.bigint "mentee_id"
     t.bigint "mentor_id"
