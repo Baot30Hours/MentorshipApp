@@ -1,0 +1,31 @@
+<% provide(:title, "Log in") %>
+
+<h1 class="page_header">Log in</h1>
+
+
+    <% flash.each do |key, value| %>
+      <%= content_tag :div, value, class: "flash #{key}" %>
+    <% end %>
+
+<div>
+  <%= form_for(:session, url: '/users/login') do |f| %>
+
+    <div class="field form-group">
+      <%= f.label :email, class: :"form-label" %>
+      <%= f.text_field :email, class: 'form-control' %>
+    </div>
+
+    <div class="field form-group">
+      <%= f.label :password, class: :"form-label" %>
+      <%= f.text_field :password, class: 'form-control' %>
+    </div>  
+
+    <div class="actions submit-btn">
+      <%= f.submit "Log in", class: "btn btn-default" %>
+    </div>  
+  <% end %>
+</div>
+
+<div class="align-to-form">
+  <p>New user? <%= link_to "Sign up now!", '/users/new' %></p>
+</div>  

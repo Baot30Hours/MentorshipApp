@@ -1,9 +1,7 @@
 <nav>
   <ul class="nav navbar-nav navbar-right">
-	  <li><a class="navbar-brand" href="/"><%= link_to 'All Mentors', controller: 'mentors'%></a></li>
-	  <li><a class="navbar-brand" href="/"><%= link_to 'All Mentees', controller: 'mentees'%></a> </li>  
-	  <li><a class="navbar-brand" href="/"><%= link_to 'All Connections', controller: 'connections'%></a></li>
-	  <li><a class="navbar-brand" href="/"><%= link_to 'All Events', controller: 'events'%></a></li>
-	  <li><a class="navbar-brand" href="/"><%= link_to 'All Users', controller: 'users'%></a></li>
-	  <li><a class="navbar-brand" href="/"><%= link_to 'Log Out', controller: 'users'%></a></li>
+  	<li><%= link_to 'Home', {controller: 'welcome'}%></li>
+	  <li><%= link_to 'Mentors', {controller: 'mentors'}%></li>
+	  <li><%= link_to 'Mentees', {controller: 'mentees'}%></li>  
+	  <li><%= link_to 'Log Out', '/users/logout'%></li>
 </nav>
