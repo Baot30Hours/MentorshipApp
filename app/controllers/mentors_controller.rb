@@ -69,6 +69,6 @@ class MentorsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def mentor_params
-      params.require(:mentor).permit(:email, :name, :date_created, :job_title, :expertise, :mentee_slots)
+      params.require(:mentor).permit(:email, :name, :company, :date_created, :job_title, :expertise, :mentee_slots)
     end
 end

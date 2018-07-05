@@ -1,47 +1,55 @@
 <%= form_with(model: mentor, local: true) do |form| %>
-  <% if mentor.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(mentor.errors.count, "error") %> prohibited this mentor from being saved:</h2>
-
-      <ul>
-      <% mentor.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <div class="field">
-    <%= form.label :email %>
-    <%= form.text_field :email, id: :mentor_email %>
+  
+  <div class="field form-group">
+    <%= form.label :name, class: :"form-label" %>
+    <%= form.text_field :name, {id: :mentor_name, class: :"form-control", placeholder: "Name"}%>
+    <% if mentor.errors[:name].present? %>
+      <span class="error-message"><%= mentor.errors[:name].join(", ") %></span>
+    <% end %>
   </div>
 
-  <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name, id: :mentor_name %>
+  <div class="field form-group">
+    <%= form.label :email, class: :"form-label" %>
+    <%= form.text_field :email, {id: :mentor_email, class: :"form-control", placeholder: "mentor@google.com"} %>
+    <% if mentor.errors[:email].present? %>
+      <span class="error-message"><%= mentor.errors[:email].join(", ") %></span>
+    <% end %>
   </div>
 
-  <div class="field">
-    <%= form.label :date_created %>
-    <%= form.datetime_select :date_created, id: :mentor_date_created %>
+  <div class="field form-group">
+    <%= form.label :company, class: :"form-label" %>
+    <%= form.text_field :company, {id: :mentor_company, class: :"form-control", placeholder: "Google"} %>
+    <% if mentor.errors[:company].present? %>
+      <span class="error-message"><%= mentor.errors[:company].join(", ") %></span>
+    <% end %>
   </div>
 
-  <div class="field">
-    <%= form.label :job_title %>
-    <%= form.text_field :job_title, id: :mentor_job_title %>
+  <div class="field form-group">
+    <%= form.label :job_title, class: :"form-label" %>
+    <%= form.text_field :job_title, {id: :mentor_job_title, class: :"form-control", placeholder: "senior frontend developer" }%>
+    <% if mentor.errors[:job_title].present? %>
+      <span class="error-message"><%= mentor.errors[:job_title].join(", ") %></span>
+    <% end %>
   </div>
 
-  <div class="field">
-    <%= form.label :expertise %>
-    <%= form.text_field :expertise, id: :mentor_expertise %>
+  <div class="field form-group">
+    <%= form.label :expertise, class: :"form-label" %>
+    <%= form.text_field :expertise, {id: :mentor_expertise, class: :"form-control", placeholder: "Angular 2, Javascript"} %>
+    <% if mentor.errors[:expertise].present? %>
+      <span class="error-message"><%= mentor.errors[:expertise].join(", ") %></span>
+    <% end %>
   </div>
 
-  <div class="field">
-    <%= form.label :mentee_slots %>
-    <%= form.number_field :mentee_slots, id: :mentor_mentee_slots %>
+  <div class="field form-group">
+    <%= form.label :mentee_slots, class: :"form-label" %>
+    <%= form.number_field :mentee_slots, {id: :mentor_mentee_slots, class: :"form-control", value: 2} %>
+    <% if mentor.errors[:mentee_slots].present? %>
+      <span class="error-message"><%= mentor.errors[:mentee_slots].join(", ") %></span>
+    <% end %>
   </div>
 
-  <div class="actions">
-    <%= form.submit %>
+  <div class="actions submit-btn">
+    <%= form.submit "Create", {class: "btn btn-default"}%>
   </div>
+
 <% end %>
