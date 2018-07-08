@@ -82,4 +82,8 @@ class ConnectionsController < ApplicationController
     def connection_params_create
       params.require(:connection).permit( :status, :mentee_id, :mentor_id).merge(status: status)
     end
+
+    def connection_params_create1
+      params.require(:connection).permit( :status, :mentee_id, :mentor_id).merge(mentor_id: mentor_id)
+    end
 end
