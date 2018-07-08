@@ -3,11 +3,12 @@
 		<h1 class="page_header">Welcome to Baot, Natasha!</h1>
 		<p>This is where you can see recent activity in the app</p>
 	</div>
-	<div>
-		<span><h2>Recently Joined</h2></span>
-		<span></span>
-		<span></span>
-		<table>
+	<div id="dashboard-table-header">
+		<span><h2 class="inline-header">Recently Joined</h2></span>
+		<span><%= link_to "New Mentee", new_mentee_path, :class => 'btn btn-lg pull-right', :role => 'button'  %></span>
+		<span><%= link_to "New Mentor", new_mentor_path, :class => 'btn btn-lg pull-right', :role => 'button'  %></span>
+	</div>
+		<table class="table">
 			<thead>
       			<tr>
 			        <th scope="col">Name</th>
@@ -18,7 +19,10 @@
 			        <th scope="col"></th>
       			</tr>
    			</thead>
+   			<tbody>
+   				
+   			</tbody>
 		</table>
-	</div>
+	
 	
 </div>

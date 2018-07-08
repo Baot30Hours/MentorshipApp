@@ -57,3 +57,19 @@ body {
 h1.page_header {
 	margin-bottom: 50px;
 }
+
+.inline-header {
+	display: inline;
+}
+
+a.btn-lg.pull-right {
+	margin-left: 14px;
+	background-color: #119BC6;
+	border: none;
+	color: #FFFFFF;
+}
+
+#dashboard-table-header {
+	margin-top: 50px;
+	margin-bottom: 50px;
+}
