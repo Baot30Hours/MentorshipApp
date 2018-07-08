@@ -28,7 +28,11 @@
 <p>
   <strong>Mentee slots:</strong>
   <%= @mentor.mentee_slots %>
-</p>
+</p> 
+
+<a id="New Connection" class="btn btn-large btn-primary" href="/connections/new?mentor_id=<%= @mentor.id %>">
++ New connection
+</a>
 
 <%= render 'mentees_list', mentor: @mentor %>
 

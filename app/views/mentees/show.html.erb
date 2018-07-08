@@ -30,6 +30,10 @@
   <%= @mentee.notes %>
 </p>
 
+<a id="New Connection" class="btn btn-large btn-primary" href="/connections/new?mentee_id=<%= @mentee.id %>">
++ New connection
+</a>
+
 <%= render 'mentors_list', mentor: @mentee %>
 
 <%= link_to 'Edit', edit_mentee_path(@mentee) %> |
