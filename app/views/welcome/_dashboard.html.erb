@@ -20,9 +20,26 @@
       			</tr>
    			</thead>
    			<tbody>
-   				
+   				<% @combined.each do |record| %>
+   				<tr>
+   					<td><%= link_to record.name, record %> </td>
+   					<td><% if record.is_a?(Mentor) %>
+   							Mentor
+   						<% else %>
+   							Mentee
+   						<% end %>
+   					</td>
+   					<td><%= record.company %></td>
+   					<td><%= record.job_title %></td>
+   					<td><%=  %></td>
+   					<td><%= link_to 'Connect', new_connection_path, :class => 'btn btn-default', :role => 'button' %></td>
+   				</tr>	
+   				<% end %>
    			</tbody>
 		</table>
 	
 	
 </div>
+
+
+
