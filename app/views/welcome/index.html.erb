@@ -1,6 +1,11 @@
 <div class="container">
 
-    <h1>Hello!</h1>
+	<% if logged_in? %>
+   	 <%= render 'dashboard' %>
+	<% else %>
+   		<h1>Hello!</h1>    
+    <% end %>  
+    
 
 </div>
 
