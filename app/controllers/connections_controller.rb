@@ -14,6 +14,13 @@ class ConnectionsController < ApplicationController
 
   # GET /connections/new
   def new
+    if params[:mentor_id].present?
+      @mentor = Mentor.find(params[:mentor_id])
+    end
+    if params[:mentee_id].present?
+      @mentee = Mentee.find(params[:mentee_id])
+    end
+    
     @connection = Connection.new
   end
 
@@ -74,5 +81,9 @@ class ConnectionsController < ApplicationController
 
     def connection_params_create
       params.require(:connection).permit( :status, :mentee_id, :mentor_id).merge(status: status)
+    end
+
+    def connection_params_create1
+      params.require(:connection).permit( :status, :mentee_id, :mentor_id).merge(mentor_id: mentor_id)
     end
 end
