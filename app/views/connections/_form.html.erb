@@ -11,6 +11,13 @@
     </div>
   <% end %>
 
+  <% if @mentor.present?%>
+    <h1> for <%= @mentor.name %> </h1>
+  <% end %>
+  <% if @mentee.present?%>
+    <h1> for <%= @mentee.name %> </h1>
+  <% end %>
+
   <% if @connection.persisted? %>
     <div class="field">
       <%= form.label :status %>
@@ -20,15 +27,21 @@
   <% end %>
 
   <div class="field">
-    <%= form.label :mentee_id %>
-    <%= form.collection_select :mentee_id, Mentee.all, :id, :name, :include_blank => true %>
-    <!--%= form.text_field :mentee_id, id: :connection_mentee_id %-->
+    <% if @mentee.present? %>
+      <%= form.hidden_field :mentee_id, :value => @mentee.id %>
+    <% else %>
+      <%= form.label :mentee_id %>
+      <%= form.collection_select :mentee_id, Mentee.all, :id, :name, :include_blank => true %>
+    <% end %>
   </div>
 
   <div class="field">
-    <%= form.label :mentor_id %>
-    <%= form.collection_select :mentor_id, Mentor.all, :id, :name, :include_blank => true %>
-    <!--%= form.text_field :mentor_id, id: :connection_mentor_id %-->
+    <% if @mentor.present? %>
+      <%= form.hidden_field :mentor_id, :value => @mentor.id %>
+    <% else %>
+      <%= form.label :mentor_id %>
+      <%= form.collection_select :mentor_id, Mentor.all, :id, :name, :include_blank => true %>
+    <% end %>
   </div>
 
   <div class="actions">

@@ -14,6 +14,13 @@ class ConnectionsController < ApplicationController
 
   # GET /connections/new
   def new
+    if params[:mentor_id].present?
+      @mentor = Mentor.find(params[:mentor_id])
+    end
+    if params[:mentee_id].present?
+      @mentee = Mentee.find(params[:mentee_id])
+    end
+    
     @connection = Connection.new
   end
 
