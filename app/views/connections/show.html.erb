@@ -22,7 +22,7 @@
 				</span>
 			</li>
 			<li><span class="field-name">connected</span>
-				<span class="field-content"><%= @connection.created_at%></span>
+				<span class="field-content"><%= @connection.created_at.strftime("%F") %></span>
 			</li>
 			<li><span class="field-name">status</span>
 				<span class="field-content"><%= @connection.status%></span>
@@ -49,7 +49,7 @@
    		<tbody>
    			<% @connection.events.reverse.each do |record| %>
    				<tr>
-   					<td><%= record.created_at %> </td>
+   					<td><%= record.created_at.strftime("%F") %> </td>
    					<td><%= record.event_type %></td>
    					<td><%= record.notes %></td>
    					<td><%=  %></td>
