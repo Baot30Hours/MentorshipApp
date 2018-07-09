@@ -7,12 +7,19 @@
 		<ul id="connection-info-list">
 			<li>
 				<span class="field-name">mentor</span>
-				<span class="field-content"><%= link_to @connection.mentor.name %>, <%= @connection.mentor.job_title%> at <%= @connection.mentor.company%> (<%= link_to @connection.mentor.email %>)
+				<span class="field-content">
+					<%= link_to @connection.mentor.name, @connection.mentor, class: :"link_text" %>, 
+					<%= @connection.mentor.job_title%> at <%= @connection.mentor.company%> 
+					(<%= mail_to @connection.mentor.email, @connection.mentor.email ,class: :"link_text" %>)
 				</span>
 			</li>
 			<li>
 				<span class="field-name">mentee</span>
-				<span class="field-content"><%= link_to @connection.mentee.name %>, <%= @connection.mentee.job_title%> at <%= @connection.mentee.company%> (<%= link_to @connection.mentee.email %>)</span>
+				<span class="field-content">
+					<%= link_to @connection.mentee.name, @connection.mentee, class: :"link_text" %>, 
+					<%= @connection.mentee.job_title%> at <%= @connection.mentee.company%> 
+					(<%= mail_to @connection.mentee.email, @connection.mentee.email ,class: :"link_text" %>)
+				</span>
 			</li>
 			<li><span class="field-name">connected</span>
 				<span class="field-content"><%= @connection.created_at%></span>
