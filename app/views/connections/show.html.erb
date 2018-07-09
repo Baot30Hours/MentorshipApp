@@ -1,19 +1,52 @@
-<p id="notice"><%= notice %></p>
+<div class="container">
 
-<p>
-  <strong>Status:</strong>
-  <%= @connection.status %>
-</p>
+	<h1 class="page_header">Connection: <%= @connection.mentor.name %> &lt; &gt; <%= @connection.mentee.name %> </h1>
 
-<p>
-  <strong>Mentee:</strong>
-  <%= @connection.mentee.name %>
-</p>
+	<div id="connection-info">
+		<h3>Info</h6>
+		<ul id="connection-info-list">
+			<li>
+				<span class="field-name">mentor</span>
+				<span class="field-content"><%= link_to @connection.mentor.name %>, <%= @connection.mentor.job_title%> at <%= @connection.mentor.company%> (<%= link_to @connection.mentor.email %>)
+				</span>
+			</li>
+			<li>
+				<span class="field-name">mentee</span>
+				<span class="field-content"><%= link_to @connection.mentee.name %>, <%= @connection.mentee.job_title%> at <%= @connection.mentee.company%> (<%= link_to @connection.mentee.email %>)</span>
+			</li>
+			<li><span class="field-name">connected</span>
+				<span class="field-content"><%= @connection.created_at%></span>
+			</li>
+			<li><span class="field-name">status</span>
+				<span class="field-content"><%= @connection.status%></span>
+			</li>
+		</ul>	
 
-<p>
-  <strong>Mentor:</strong>
-  <%= @connection.mentor.name %>
-</p>
+		<%= link_to "close connection" %>
+	</div>
+	<div id="connection-table-header">
+		<span><h2 class="inline-header">Updates</h2></span>
+		<span><%= link_to "New Update", new_event_path, :class => 'btn btn-lg pull-right', :role => 'button'  %></span>
+	</div>
+	<table class="table">
+		<thead>
+      		<tr>
+			    <th scope="col">Date</th>
+			    <th scope="col">Type</th>
+			    <th scope="col">Notes</th>
+			    <th scope="col">Actions</th>
+      		</tr>
+   		</thead>
+   		<tbody>
+   			<% @connection.events.each do |record| %>
+   				<tr>
+   					<td><%= record.created_at %> </td>
+   					<td><%= record.type %></td>
+   					<td><%= record.notes %></td>
+   					<td><%= record.actions %></td>
+   				</tr>	
+   			<% end %>
+   		</tbody>
+	</table>
 
-<%= link_to 'Edit', edit_connection_path(@connection) %> |
-<%= link_to 'Back', connections_path %>
+</div>

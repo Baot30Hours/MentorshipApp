@@ -69,7 +69,26 @@ a.btn-lg.pull-right {
 	color: #FFFFFF;
 }
 
-#dashboard-table-header {
+#dashboard-table-header, #connection-table-header {
 	margin-top: 50px;
 	margin-bottom: 50px;
 }
+
+#connection-info-list {
+	list-style-type: none;
+	padding-left: 0;
+
+}
+
+.field-name {
+	font-size: 18px;	
+	font-weight: bold;
+	color: #777777;
+	width: 110px;
+	display: inline-block;
+}
+
+.field-content {
+	font-size: 18px;	
+}
+
