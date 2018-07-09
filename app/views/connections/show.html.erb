@@ -3,7 +3,7 @@
 	<h1 class="page_header">Connection: <%= @connection.mentor.name %> &lt; &gt; <%= @connection.mentee.name %> </h1>
 
 	<div id="connection-info">
-		<h3>info</h6>
+		<h3>Info</h6>
 		<ul id="connection-info-list">
 			<li>
 				<span class="field-name">mentor</span>
@@ -21,5 +21,32 @@
 				<span class="field-content"><%= @connection.status%></span>
 			</li>
 		</ul>	
+
+		<%= link_to "close connection" %>
 	</div>
+	<div id="connection-table-header">
+		<span><h2 class="inline-header">Updates</h2></span>
+		<span><%= link_to "New Update", new_event_path, :class => 'btn btn-lg pull-right', :role => 'button'  %></span>
+	</div>
+	<table class="table">
+		<thead>
+      		<tr>
+			    <th scope="col">Date</th>
+			    <th scope="col">Type</th>
+			    <th scope="col">Notes</th>
+			    <th scope="col">Actions</th>
+      		</tr>
+   		</thead>
+   		<tbody>
+   			<% @connection.events.each do |record| %>
+   				<tr>
+   					<td><%= record.created_at %> </td>
+   					<td><%= record.type %></td>
+   					<td><%= record.notes %></td>
+   					<td><%= record.actions %></td>
+   				</tr>	
+   			<% end %>
+   		</tbody>
+	</table>
+
 </div>
