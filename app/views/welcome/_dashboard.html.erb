@@ -31,7 +31,14 @@
    					</td>
    					<td><%= record.company %></td>
    					<td><%= record.job_title %></td>
-   					<td><%=  %></td>
+   					<td><% record.connections.each do |connection| %>
+   							<% if record.is_a?(Mentor) %>
+   								<%= connection.mentee.name %>
+   							<% else %>
+   								<%= connection.mentor.name %>
+   							<% end %>
+   						<% end %>
+   					</td>
    					<td><%= link_to 'Connect', new_connection_path, :class => 'btn btn-default', :role => 'button' %></td>
    				</tr>	
    				<% end %>
