@@ -22,7 +22,7 @@
    			<tbody>
    				<% @combined.each do |record| %>
    				<tr>
-   					<td><%= link_to record.name, record %> </td>
+   					<td><%= link_to record.name, record, :class => "link_text" %> </td>
    					<td><% if record.is_a?(Mentor) %>
    							Mentor
    						<% else %>
@@ -31,7 +31,14 @@
    					</td>
    					<td><%= record.company %></td>
    					<td><%= record.job_title %></td>
-   					<td><%=  %></td>
+   					<td><% record.connections.each do |connection| %>
+   							<% if record.is_a?(Mentor) %>
+   								<%= link_to connection.mentee.name, "/mentees/" + connection.mentee.id.to_s, :class => "link_text" %>
+   							<% else %>
+   								<%= link_to connection.mentor.name, "/mentors/" + connection.mentor.id.to_s, :class => "link_text" %>
+   							<% end %>
+   						<% end %>
+   					</td>
    					<td><%= link_to 'Connect', new_connection_path, :class => 'btn btn-default', :role => 'button' %></td>
    				</tr>	
    				<% end %>
