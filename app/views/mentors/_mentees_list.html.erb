@@ -1,8 +1,30 @@
+<% if @mentor.connections.empty?  %>
+   	<h2> No Mentees </h2>
+<% else %>
 <h2>Mentees</h2>
-<% @mentor.mentees.each do |mentee| %>
-  <p>
-    <strong>Connected Mentee Name:</strong> 
-    <%= mentee.name %>
-  </p>
- 
+<div class="table-responsive">
+<table class="table">
+	<tr>
+		<th scope="col">Mentee Name</th>
+		<th scope="col">Status</th>
+		<th scope="col">Created at</th>
+		<th scope="col"># of eventes</th>
+		<th scope="col">Last Update</th>
+		<th scope="col"></th>
+	</tr>
+
+	<tbody>
+		<% @mentor.connections.each do |connection| %>
+		<tr>
+			<td><%= link_to connection.mentee.name, mentee_path %></span>
+			<td><%= connection.status %></td>
+			<td><%= connection.created_at%></td>
+			<td><%= connection.events.length %></td>
+			<td><%= connection.last_updated %></td>
+			<td><%= link_to 'Show more', events_path, :class => 'btn btn-default', :role => 'button' %></td>
+		</tr>
+	 <% end %>
+	</tbody>
+</table>
+</div>
 <% end %>
