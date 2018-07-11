@@ -11,13 +11,6 @@
     </div>
   <% end %>
 
-  <% if @mentor.present?%>
-    <h1> for <%= @mentor.name %> </h1>
-  <% end %>
-  <% if @mentee.present?%>
-    <h1> for <%= @mentee.name %> </h1>
-  <% end %>
-
   <% if @connection.persisted? %>
     <div class="field">
       <%= form.label :status %>
