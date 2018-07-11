@@ -36,11 +36,16 @@
    								<%= link_to connection.mentee.name, connection, :class => "link_text" %>
    							<% else %>
    								<%= link_to connection.mentor.name, connection, :class => "link_text" %>
-
    							<% end %>
    						<% end %>
    					</td>
-   					<td><%= link_to 'Connect', new_connection_path, :class => 'btn btn-default', :role => 'button' %></td>
+					<td>
+					    <% if record.is_a?(Mentor) %>
+							<%= link_to 'Connect', newConnectionForMentorPath(record.id), :class => 'btn btn-default', :role => 'button' %>
+						<% else %>
+							<%= link_to 'Connect', newConnectionForMenteePath(record.id), :class => 'btn btn-default', :role => 'button' %>
+						<% end %>
+					</td>
    				</tr>	
    				<% end %>
    			</tbody>

@@ -1,4 +1,9 @@
-<h1>New Connection</h1>
+<% if @mentor.present?%>
+<h1> New Mentee for <%= @mentor.name %> </h1>
+<% end %>
+<% if @mentee.present?%>
+<h1> New Mentor for <%= @mentee.name %> </h1>
+<% end %>
 
 <%= render 'form', connection: @connection %>
 
