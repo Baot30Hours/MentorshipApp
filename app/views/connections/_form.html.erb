@@ -12,32 +12,32 @@
   <% end %>
 
   <% if @connection.persisted? %>
-    <div class="field">
-      <%= form.label :status %>
+    <div class="field form-group">
+      <%= form.label :status, class: :"form-label" %>
       <%= form.select :status, Connection.statuses.keys%>
       <!--%= form.number_field :status, id: :connection_status %-->
     </div>
   <% end %>
 
-  <div class="field">
+  <div class="field form-group">
     <% if @mentee.present? %>
       <%= form.hidden_field :mentee_id, :value => @mentee.id %>
     <% else %>
-      <%= form.label :mentee_id %>
-      <%= form.collection_select :mentee_id, Mentee.all, :id, :name, :include_blank => true %>
+      <%= form.label :mentee_id, class: :"form-label" %>
+      <%= form.collection_select :mentee_id, Mentee.all, :id, :name, {:include_blank => true}, {class: :"form-control"} %>
     <% end %>
   </div>
 
-  <div class="field">
+  <div class="field form-group">
     <% if @mentor.present? %>
       <%= form.hidden_field :mentor_id, :value => @mentor.id %>
     <% else %>
-      <%= form.label :mentor_id %>
-      <%= form.collection_select :mentor_id, Mentor.all, :id, :name, :include_blank => true %>
+      <%= form.label :mentor_id, class: :"form-label" %>
+      <%= form.collection_select :mentor_id, Mentor.all, :id, :name, {:include_blank => true}, {class: :"form-control"} %>
     <% end %>
   </div>
 
-  <div class="actions">
-    <%= form.submit %>
+  <div class="actions submit-btn">
+    <%= form.submit "Create", {class: "btn btn-default"}%>
   </div>
 <% end %>
