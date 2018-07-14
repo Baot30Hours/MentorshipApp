@@ -4,6 +4,7 @@ class Connection < ApplicationRecord
   has_many :events
   enum status: [:active, :closed]
   validates :mentor, uniqueness: { scope: :mentee }
+  validates_associated :mentor, {message: ": mentor has no available slots" }
   
   def last_updated
   	if (self.events.empty?)
