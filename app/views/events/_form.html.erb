@@ -2,7 +2,7 @@
 
   <div class="field form-group">
     <%= form.label :connection_id, class: :"form-label" %>
-    <%= form.text_field :connection_id, id: :event_connection_id, class: :"form-control" %>
+    <%= form.collection_select :connection_id, Connection.all, :id, :display_name, {}, {class: :"form-control"} %>
   </div>
 
   <div class="field form-group">
