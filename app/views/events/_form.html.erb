@@ -2,7 +2,8 @@
 
   <div class="field form-group">
     <%= form.label :connection_id, class: :"form-label" %>
-    <%= form.collection_select :connection_id, Connection.all, :id, :display_name, {}, {class: :"form-control"} %>
+    <%= form.collection_select :connection_id, Connection.all, :id, :display_name, 
+    {:include_blank => true, :selected => event.connection_id(&:id) }, {class: :"form-control"} %>
   </div>
 
   <div class="field form-group">
@@ -24,3 +25,4 @@
     <%= form.submit "Create", {class: "btn btn-default"} %>
   </div>
 <% end %>
+

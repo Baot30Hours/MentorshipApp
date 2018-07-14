@@ -15,7 +15,12 @@ class EventsController < ApplicationController
 
   # GET /events/new
   def new
-    @event = Event.new
+    if params[:connection_id].present?
+      @connection = Connection.find(params[:connection_id])
+    end
+    
+    @event = Event.new(:connection_id => @connection.id)
+
   end
 
   # GET /events/1/edit
