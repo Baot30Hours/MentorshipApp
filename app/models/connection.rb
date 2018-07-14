@@ -3,6 +3,7 @@ class Connection < ApplicationRecord
   belongs_to :mentor
   has_many :events
   enum status: [:active, :closed]
+  validates :mentor, uniqueness: { scope: :mentee }
   
   def last_updated
   	if (self.events.empty?)
