@@ -18,9 +18,9 @@ class EventsController < ApplicationController
     if params[:connection_id].present?
       @connection = Connection.find(params[:connection_id])
       @event = Event.new(:connection_id => @connection.id)
+    else 
+      @event = Event.new
     end
-    
-    @event = Event.new
   end
 
   # GET /events/1/edit
