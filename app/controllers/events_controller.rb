@@ -5,6 +5,7 @@ class EventsController < ApplicationController
   # GET /events.json
   def index
     @events = Event.all
+    @connections = Connection.all
   end
 
   # GET /events/1
@@ -14,7 +15,12 @@ class EventsController < ApplicationController
 
   # GET /events/new
   def new
-    @event = Event.new
+    if params[:connection_id].present?
+      @connection = Connection.find(params[:connection_id])
+      @event = Event.new(:connection_id => @connection.id)
+    else 
+      @event = Event.new
+    end
   end
 
   # GET /events/1/edit
@@ -69,6 +75,6 @@ class EventsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def event_params
-      params.require(:event).permit(:timestamp, :event_date, :event_type, :meeting_method, :notes, :connection_id)
+      params.require(:event).permit(:timestamp, :event_date, :event_type, :meeting_method, :notes, :connection_id, :actions)
     end
 end

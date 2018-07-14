@@ -20,7 +20,7 @@
       			</tr>
    			</thead>
    			<tbody>
-   				<% @combined.each do |record| %>
+   				<% @combined.first(10).each do |record| %>
    				<tr>
    					<td><%= link_to record.name, record, :class => "link_text" %> </td>
    					<td><% if record.is_a?(Mentor) %>
