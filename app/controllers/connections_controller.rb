@@ -76,14 +76,14 @@ class ConnectionsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def connection_params_update
-      params.require(:connection).permit( :status, :mentee_id, :mentor_id)
+      params.require(:connection).permit( :status, :mentee_id, :mentor_id, :display_name)
     end
 
     def connection_params_create
-      params.require(:connection).permit( :status, :mentee_id, :mentor_id).merge(status: status)
+      params.require(:connection).permit( :status, :mentee_id, :mentor_id, :display_name).merge(status: status)
     end
 
     def connection_params_create1
-      params.require(:connection).permit( :status, :mentee_id, :mentor_id).merge(mentor_id: mentor_id)
+      params.require(:connection).permit( :status, :mentee_id, :mentor_id, :display_name).merge(mentor_id: mentor_id)
     end
 end

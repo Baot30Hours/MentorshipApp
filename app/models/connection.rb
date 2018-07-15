@@ -18,5 +18,4 @@ class Connection < ApplicationRecord
   def display_name
     self.mentor.name + " <> " + self.mentee.name
   end
-
 end

@@ -1,8 +1,8 @@
-<div class="container">
-	<div>
+
+
 		<h1 class="page_header">Welcome to Baot, Natasha!</h1>
 		<p>This is where you can see recent activity in the app</p>
-	</div>
+		
 	<div id="dashboard-table-header">
 		<span><h2 class="inline-header">Recently Joined</h2></span>
 		<span><%= link_to "New Mentee", new_mentee_path, :class => 'btn btn-lg pull-right', :role => 'button'  %></span>
@@ -20,7 +20,7 @@
       			</tr>
    			</thead>
    			<tbody>
-   				<% @combined.each do |record| %>
+   				<% @combined.first(10).each do |record| %>
    				<tr>
    					<td><%= link_to record.name, record, :class => "link_text" %> </td>
    					<td><% if record.is_a?(Mentor) %>
