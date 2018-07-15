@@ -1,40 +1,44 @@
-<p id="notice"><%= notice %></p>
-
-<p>
-  <strong>Email:</strong>
-  <%= @mentor.email %>
+<div class="container">
+  <div>
+    <h1 class="page_header">Mentor: <%= @mentor.name %></h1>
+  </div>
+  <div>
+    <span><h3 class="inline-header">Profile  </h3></span>
+    <%= link_to 'Edit', edit_mentor_path(@mentor)  %> 
+  </div>
+  <p class="details">
+    <div class="row">
+      <div class="col-xs-2">Email</div>
+      <div class="col-xs-2"><%= @mentor.email %></div>
+    </div>
+    <div class="row">
+      <div class="col-xs-2">Joined</div>
+      <div class="col-xs-2"><%= @mentor.date_created%></div>
+    </div>
+    <div class="row">
+      <div class="col-xs-2">Works at</div>
+      <div class="col-xs-2"><%= @mentor.company %></div>
+    </div>
+    <div class="row">
+      <div class="col-xs-2">Title</div>
+      <div class="col-xs-2"><%= @mentor.job_title %></div>
+    </div>
+    <div class="row">
+      <div class="col-xs-2">Expertise</div>
+      <div class="col-xs-2"><%= @mentor.expertise %></div>
+    </div>
+    <div class="row">
+      <div class="col-xs-2">Slots</div>
+      <div class="col-xs-2"><%= @mentor.mentee_slots %> (<%= @mentor.available_slots %> open)</div>
+    </div>
 </p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @mentor.name %>
-</p>
+<div>
+    <span><h3 class="inline-header">Mentees  </h3></span>
+    <span><%= link_to '+ New Mentee', new_connection_path, :class => 'btn btn-lg pull-right', :role => 'button' %></span>
+  </div>
+  <%= render 'mentees_list', mentor: @mentor %>
+</div>
 
-<p>
-  <strong>Date created:</strong>
-  <%= @mentor.date_created %>
-</p>
 
-<p>
-  <strong>Job title:</strong>
-  <%= @mentor.job_title %>
-</p>
-
-<p>
-  <strong>Expertise:</strong>
-  <%= @mentor.expertise %>
-</p>
-
-<p>
-  <strong>Mentee slots:</strong>
-  <%= @mentor.mentee_slots %>
-</p> 
-
-<a id="New Connection" class="btn btn-large btn-primary" href="/connections/new?mentor_id=<%= @mentor.id %>">
-+ New connection
-</a>
-
-<%= render 'mentees_list', mentor: @mentor %>
-
-<%= link_to 'Edit', edit_mentor_path(@mentor) %> |
 <%= link_to 'Back', mentors_path %>
