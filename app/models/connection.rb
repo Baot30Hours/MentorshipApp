@@ -12,11 +12,10 @@ class Connection < ApplicationRecord
   		self.updated_at
   	else
   		return self.events.sort_by(&:created_at).first.updated_at
-   end
+    end
   end
 
   def display_name
     self.mentor.name + " <> " + self.mentee.name
   end
-
 end

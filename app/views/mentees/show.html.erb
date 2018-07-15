@@ -1,40 +1,43 @@
-<p id="notice"><%= notice %></p>
-
-<p>
-  <strong>Email:</strong>
-  <%= @mentee.email %>
+<div class="container">
+  <div>
+    <h1 class="page_header">Mentee: <%= @mentee.name %></h1>
+  </div>
+  <div>
+    <span><h3 class="inline-header">Profile  </h3></span>
+    <%= link_to 'Edit', edit_mentee_path(@mentee)  %> 
+  </div>
+  <p class="details">
+    <div class="row">
+      <div class="col-xs-2">Email</div>
+      <div class="col-xs-2"><%= @mentee.email %></div>
+    </div>
+    <div class="row">
+      <div class="col-xs-2">Joined</div>
+      <div class="col-xs-2"><%= @mentee.date_created%></div>
+    </div>
+    <div class="row">
+      <div class="col-xs-2">Works at</div>
+      <div class="col-xs-2"><%= @mentee.company %></div>
+    </div>
+    <div class="row">
+      <div class="col-xs-2">Title</div>
+      <div class="col-xs-2"><%= @mentee.job_title %></div>
+    </div>
+    <div class="row">
+      <div class="col-xs-2">Expertise</div>
+      <div class="col-xs-2"><%= @mentee.expertise %></div>
+    </div>
+    <div class="row">
+      <div class="col-xs-2">Notes</div>
+      <div class="col-xs-2"><%= @mentee.notes %></div>
+    </div>
 </p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @mentee.name %>
-</p>
+<div>
+    <span><%= link_to '+ New Mentor', new_connection_path, :class => 'btn btn-lg pull-right', :role => 'button' %></span>
+</div>
+  <%= render 'mentors_list', mentor: @mentee %>
+</div>
 
-<p>
-  <strong>Date created:</strong>
-  <%= @mentee.date_created %>
-</p>
 
-<p>
-  <strong>Job title:</strong>
-  <%= @mentee.job_title %>
-</p>
-
-<p>
-  <strong>Expertise:</strong>
-  <%= @mentee.expertise %>
-</p>
-
-<p>
-  <strong>Notes:</strong>
-  <%= @mentee.notes %>
-</p>
-
-<a id="New Connection" class="btn btn-large btn-primary" href="/connections/new?mentee_id=<%= @mentee.id %>">
-+ New connection
-</a>
-
-<%= render 'mentors_list', mentor: @mentee %>
-
-<%= link_to 'Edit', edit_mentee_path(@mentee) %> |
 <%= link_to 'Back', mentees_path %>
