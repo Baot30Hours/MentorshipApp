@@ -1,7 +1,10 @@
-<div class="mentor-mentee mentor">
-  <h1 class="page-header">Mentor: <%= @mentor.name %></h1>
+<div class="mentor-mentee mentor show">
+  <h1 class="page-header">
+    <span class="category">Mentor</span> 
+    <%= @mentor.name %>
+  </h1>
   
-  <div class="profile">
+  <div class="info-title">
     <h3 class="inline-header">Profile</h3>&nbsp;
     <%= link_to 'Edit', edit_mentor_path(@mentor)%> 
   </div>
