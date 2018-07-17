@@ -1,57 +1,65 @@
-<p id="notice"><%= notice %></p>
-
-		<h1 class="page_header">Welcome to Baot, <%= current_user.userName %>!</h1>
-		<p>This is where you can see recent activity in the app</p>
+<div class="dashboard">
+	<h1 class="page-header">Welcome to Baot Mentorship, <%= current_user.userName %>!</h1>
+	<p>
+		Recently joined mentors and mentees are displayed below.
+	</p>
 		
-	<div id="dashboard-table-header">
-		<span><h2 class="inline-header">Recently Joined</h2></span>
-		<span><%= link_to "New Mentee", new_mentee_path, :class => 'btn btn-lg pull-right', :role => 'button'  %></span>
-		<span><%= link_to "New Mentor", new_mentor_path, :class => 'btn btn-lg pull-right', :role => 'button'  %></span>
+	<div class="row table-header">
+		<div class="col">
+			<h2 class="inline-header">Recently Joined</h2>
+		</div>
+		
+		<div class="col col-lg-auto">
+			<%= link_to "New Mentee", new_mentee_path, :class => 'btn btn-lg btn-primary', :role => 'button' %>
+			<%= link_to "New Mentor", new_mentor_path, :class => 'btn btn-lg btn-primary', :role => 'button' %>
+		</div>
 	</div>
-		<table class="table">
-			<thead>
-      			<tr>
-			        <th scope="col">Name</th>
-			        <th scope="col">Type</th>
-			        <th scope="col">Company</th>
-			        <th scope="col">Title</th>
-			        <th scope="col">connections</th>
-			        <th scope="col"></th>
-      			</tr>
-   			</thead>
-   			<tbody>
-   				<% @combined.first(10).each do |record| %>
-   				<tr>
-   					<td><%= link_to record.name, record, :class => "link_text" %> </td>
-   					<td><% if record.is_a?(Mentor) %>
-   							Mentor
-   						<% else %>
-   							Mentee
-   						<% end %>
-   					</td>
-   					<td><%= record.company %></td>
-   					<td><%= record.job_title %></td>
-   					<td><% record.connections.each do |connection| %>
-   							<% if record.is_a?(Mentor) %>
-   								<%= link_to connection.mentee.name, connection, :class => "link_text" %>
-   							<% else %>
-   								<%= link_to connection.mentor.name, connection, :class => "link_text" %>
-   							<% end %>
-   						<% end %>
-   					</td>
-					<td>
-					    <% if record.is_a?(Mentor) %>
-							<%= link_to 'Connect', newConnectionForMentorPath(record.id), :class => 'btn btn-default', :role => 'button' %>
+
+	<table class="table">
+		<thead>
+			<tr>
+				<th scope="col">Name</th>
+				<th scope="col">Type</th>
+				<th scope="col">Company</th>
+				<th scope="col">Title</th>
+				<th scope="col">Connections</th>
+				<th scope="col"></th>
+			</tr>
+		</thead>
+		<tbody>
+			<% @combined.first(10).each do |record| %>
+			<tr>
+				<td><%= link_to record.name, record %> </td>
+				<td>
+					<% if record.is_a?(Mentor) %>
+						<span class="tag tag-mentor">Mentor</span>
+					<% else %>
+						<span class="tag tag-mentee">Mentee</span>
+					<% end %>
+				</td>
+				<td><%= record.company %></td>
+				<td><%= record.job_title %></td>
+				<td><% record.connections.each do |connection| %>
+						<% if record.is_a?(Mentor) %>
+							<%= link_to connection.mentee.name, connection %>
 						<% else %>
-							<%= link_to 'Connect', newConnectionForMenteePath(record.id), :class => 'btn btn-default', :role => 'button' %>
+							<%= link_to connection.mentor.name, connection %>
 						<% end %>
-					</td>
-   				</tr>	
-   				<% end %>
-   			</tbody>
-		</table>
-	
-	
+					<% end %>
+				</td>
+				<td>
+					<% if record.is_a?(Mentor) %>
+						<%= link_to 'Connect', newConnectionForMentorPath(record.id),
+							 :class => 'btn btn-outline-primary', :role => 'button' %>
+					<% else %>
+						<%= link_to 'Connect', newConnectionForMenteePath(record.id), 
+							 :class => 'btn btn-outline-primary', :role => 'button' %>
+					<% end %>
+				</td>
+			</tr>	
+			<% end %>
+		</tbody>
+	</table>
 </div>
 
 
