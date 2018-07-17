@@ -20,7 +20,7 @@
 	<!-- List -->		   
 	<% else %>
 
-		<div class="table-responsive">
+		<div class="table-responsive events-list">
 			<table class="table">
 				<tr>
 					<th scope="col">Date</th>
@@ -33,17 +33,24 @@
 					<% connection.events.reverse.each do |event| %>
 					<tr>
 						<td>
-                            <% time_ago_in_words event.created_at %> ago
+							<% if event.event_date %>
+                            	<%= time_ago_in_words event.event_date %> ago
+							<% end %>
 						</td>
 						<td>
-							<%= event.event_type %>
+							<span class="tag <%=event.event_type%>">
+								<%= event.event_type %>
+							</span>
 						</td>
 
 						<td>
                             <%= event.notes %>
                         </td>
 
-                        <td></td>
+                        <td>                  
+							<%= link_to 'Edit', edit_event_path(event), :class => 'btn btn-sm btn-outline-primary', :role => 'button' %>
+                  			<%= link_to 'Remove', event, method: :delete, data: { confirm: 'Are you sure?' }, :class => 'btn btn-sm btn-outline-danger', :role => 'button' %>
+						</td>
 
 					</tr>
 				<% end %>

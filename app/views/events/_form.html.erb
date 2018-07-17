@@ -1,10 +1,10 @@
 <%= form_with(model: event, local: true) do |form| %>
-
   <div class="field form-group">
-    <%= form.label :connection_id, class: :"form-label" %>
-    <%= form.collection_select :connection_id, Connection.all, :id, :display_name, 
-    {:include_blank => true, :selected => event.connection_id(&:id) }, {class: :"form-control"} %>
+    <%= form.label :event_date, class: "form-label" %>
+    <%= form.date_field :event_date, {id: :event_date, class: "form-control", value: Time.now.to_date } %>
   </div>
+
+  <%= form.hidden_field :connection_id %>
 
   <div class="field form-group">
     <%= form.label :event_type, class: :"form-label" %>
@@ -22,7 +22,7 @@
   </div>
 
   <div class="actions submit-btn">
-    <%= form.submit "Create", {class: "btn btn-default"} %>
+    <%= form.submit "Create", {class: "btn btn-lg btn-primary"} %>
   </div>
 <% end %>
 

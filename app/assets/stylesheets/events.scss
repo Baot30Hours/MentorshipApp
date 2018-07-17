@@ -1,0 +1,15 @@
+.events-list {
+    .tag {
+        &.meeting {
+            background: #4DB6AC;
+        }
+
+        &.discussion {
+            background: #9CCC65;
+        }
+
+        &.note {
+            background: #9575CD;
+        }
+    }
+}
