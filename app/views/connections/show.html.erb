@@ -55,32 +55,5 @@
 		<%= link_to "Close connection", '#' %>
 	</div>
 
-
-	<div id="connection-table-header">
-		<span><h2 class="inline-header">Updates</h2></span>
-		<span>
-			<%= link_to "New Update", new_event_path(:connection_id => @connection.id ), 
-			:class => 'btn-lg pull-right', :role => 'button'%>	
-		</span>
-	</div>
-	<table class="table">
-		<thead>
-      		<tr>
-			    <th scope="col">Date</th>
-			    <th scope="col">Type</th>
-			    <th scope="col">Notes</th>
-			    <th scope="col">Actions</th>
-      		</tr>
-   		</thead>
-   		<tbody>
-   			<% @connection.events.reverse.each do |record| %>
-   				<tr>
-   					<td><%= record.created_at.strftime("%F") %> </td>
-   					<td><%= record.event_type %></td>
-   					<td><%= record.notes %></td>
-   					<td><%=  %></td>
-   				</tr>	
-   			<% end %>
-   		</tbody>
-	</table>
+  	<%= render 'events_list', connection: @connection %>
 </div>

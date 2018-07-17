@@ -1,0 +1,55 @@
+<div class="events-list">
+
+	<!-- Header -->
+	<div class="row table-header">
+		<div class="col">
+			<h3>Relationship updates</h3>
+		</div>
+		<div class="col col-lg-auto">
+            <%= link_to '+ New Update', 
+                new_event_path(:connection_id => connection.id ), 
+                :class => 'btn btn-lg btn-primary', :role => 'button' %>
+		</div>
+	</div>
+
+	<!-- Empty state -->
+	<% if connection.events.empty?  %>
+
+   		<h4> Nothing here (yet!) </h4>
+
+	<!-- List -->		   
+	<% else %>
+
+		<div class="table-responsive">
+			<table class="table">
+				<tr>
+					<th scope="col">Date</th>
+					<th scope="col">Update type</th>
+					<th scope="col">Notes</th>
+					<th scope="col">Actions</th>
+				</tr>
+
+				<tbody>
+					<% connection.events.reverse.each do |event| %>
+					<tr>
+						<td>
+                            <% time_ago_in_words event.created_at %> ago
+						</td>
+						<td>
+							<%= event.event_type %>
+						</td>
+
+						<td>
+                            <%= event.notes %>
+                        </td>
+
+                        <td></td>
+
+					</tr>
+				<% end %>
+				</tbody>
+			</table>
+		</div>
+
+	<% end %>
+</div>
