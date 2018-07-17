@@ -3,15 +3,17 @@
 	<!-- Header -->
 	<div class="row table-header">
 		<div class="col">
-			<h3 class="inline-header">Mentees</h3>
+			<h3 class="inline-header">
+				<%= person.is_a?(Mentor) ? 'Mentees' : 'Mentors' %>
+			</h3>
 		</div>
 		<div class="col col-lg-auto">
-			<%= link_to '+ New Mentee', @mentor.new_connection_path, :class => 'btn btn-lg btn-primary', :role => 'button' %>
+			<%= link_to '+ New Mentee', person.new_connection_path, :class => 'btn btn-lg btn-primary', :role => 'button' %>
 		</div>
 	</div>
 
 	<!-- Empty state -->
-	<% if @mentor.connections.empty?  %>
+	<% if person.connections.empty?  %>
 
    		<h2> No Mentees </h2>
 
@@ -30,9 +32,15 @@
 				</tr>
 
 				<tbody>
-					<% @mentor.connections.each do |connection| %>
+					<% person.connections.each do |connection| %>
 					<tr>
-						<td><%= link_to connection.mentee.name, mentee_path %></span>
+						<td>
+							<% if person.is_a?(Mentor) %>
+								<%= link_to connection.mentee.name, mentee_path %>
+							<% else %>
+								<%= link_to connection.mentor.name, mentor_path %>
+							<% end %>
+						</td>
 						<td>
 							<span class="tag tag-<%= connection.status %>">
 								<%= connection.status %>

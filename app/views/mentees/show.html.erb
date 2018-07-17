@@ -28,17 +28,6 @@
     </dl>
   </div>
 
-  <div>
-    <div class="row">
-        <div class="col">
-          <h3 class="inline-header">Mentors</h3>
-        </div>
-        <div class="col col-lg-auto">
-          <%= link_to '+ New Mentor', new_connection_path, :class => 'btn btn-lg btn-primary', :role => 'button' %>
-        </div>    
-    </div>
-  </div>
-  <%= render 'mentors_list', mentor: @mentee %>
-  </div>
+  <%= render 'shared/mentees_list', person: @mentee %>
 
 </div>
