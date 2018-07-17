@@ -22,7 +22,8 @@
   </div>
 
   <div class="actions submit-btn">
-    <%= form.submit "Create", {class: "btn btn-lg btn-primary"} %>
+    <%= link_to '‹ Back', connection_path(event.connection_id), {class: "btn btn-outline-primary btn-lg"} %>&nbsp;&nbsp;
+    <%= form.submit action_name, {class: "btn btn-lg btn-primary"} %>
   </div>
 <% end %>
 
