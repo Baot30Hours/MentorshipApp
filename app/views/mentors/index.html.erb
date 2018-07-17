@@ -27,7 +27,7 @@
           <% @mentors.each do |mentor| %>
             <tr>
               <td><%= link_to mentor.name, mentor %></td>
-              <td><%= mentor.email %></td>
+              <td><%= mail_to mentor.email %></td>
               <td><%= mentor.company %></td>
               <td><%= mentor.job_title %></td>
               <td><%= mentor.expertise %></td>
