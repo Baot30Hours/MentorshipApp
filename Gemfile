@@ -36,7 +36,7 @@ gem 'jbuilder', '~> 2.5'
 
 gem 'jquery-rails'
 
-gem 'bootstrap-sass', '~> 3.3', '>= 3.3.6'
+gem 'bootstrap', '~> 4.1.1'
 gem 'autoprefixer-rails'
 
 group :development, :test do

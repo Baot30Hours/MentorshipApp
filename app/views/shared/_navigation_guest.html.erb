@@ -1,4 +1,10 @@
-<nav>
-  <ul class="nav navbar-nav navbar-right">
-	  <li><a href="/users/login">Log in</a></li>
-</nav>
+<a class="navbar-brand" href="/">Baot</a>
+<div class="collapse navbar-collapse" id="navbarNav">
+	<ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+		<!-- Additional left items can come here -->
+	</ul>
+	
+	<ul class="navbar-nav my-2 my-lg-0">
+	  <li><%= link_to 'Log in', '/users/login', {:class => 'nav-link'} %></li>
+	</ul>
+</div>
