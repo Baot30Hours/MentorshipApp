@@ -1,0 +1,11 @@
+.mentor-mentee-list {
+    .tag {
+        &.active {
+            background: #4CAF50;
+        }
+
+        &.closed {
+            background: #9E9E9E;
+        }
+    }
+}
