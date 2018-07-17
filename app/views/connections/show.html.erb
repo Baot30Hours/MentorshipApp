@@ -1,36 +1,61 @@
+<div class="connection show">
+	<h1 class="page-header">
+		<span class="category">Connection</span> 
+		<%= @connection.display_name %> 
+	</h1>
 
-
-	<h1 class="page-header">Connection: <%= @connection.display_name %> </h1>
-
-	<div id="connection-info">
-		<h3>Info</h6>
-		<ul id="connection-info-list">
-			<li>
-				<span class="field-name">mentor</span>
-				<span class="field-content">
-					<%= link_to @connection.mentor.name, @connection.mentor, class: :"link_text" %>, 
-					<%= @connection.mentor.job_title%> at <%= @connection.mentor.company%> 
-					(<%= mail_to @connection.mentor.email, @connection.mentor.email ,class: :"link_text" %>)
-				</span>
-			</li>
-			<li>
-				<span class="field-name">mentee</span>
-				<span class="field-content">
-					<%= link_to @connection.mentee.name, @connection.mentee, class: :"link_text" %>, 
-					<%= @connection.mentee.job_title%> at <%= @connection.mentee.company%> 
-					(<%= mail_to @connection.mentee.email, @connection.mentee.email ,class: :"link_text" %>)
-				</span>
-			</li>
-			<li><span class="field-name">connected</span>
-				<span class="field-content"><%= @connection.created_at.strftime("%F") %></span>
-			</li>
-			<li><span class="field-name">status</span>
-				<span class="field-content"><%= @connection.status%></span>
-			</li>
-		</ul>	
-
-		<%= link_to "close connection", connection_path %>
+	<div class="info-title">
+		<h3>Info</h3>
 	</div>
+
+	<div class="details">
+		<dl class="row">
+			<dt class="col-sm-2">Mentor</dt>
+			<dd class="col-sm-10">
+				<%= link_to @connection.mentor.name, @connection.mentor %>, 
+
+				<% if @connection.mentor.company || @connection.mentor.job_title %>
+					<%= @connection.mentor.job_title ? @connection.mentor.job_title : 'Works' %> 
+					<%= @connection.mentor.company ? 'at ' + @connection.mentor.company : nil %> 
+				<% end %>
+
+				(<%= mail_to @connection.mentor.email %>)
+			</dd>
+
+			<dt class="col-sm-2">Mentee</dt>
+			<dd class="col-sm-10">
+				<%= link_to @connection.mentee.name, @connection.mentee %>, 
+
+				<% if @connection.mentee.company || @connection.mentee.job_title %>
+					<%= @connection.mentee.job_title ? @connection.mentee.job_title : 'Works' %> 
+					<%= @connection.mentee.company ? 'at ' + @connection.mentee.company : nil %> 
+				<% end %>
+
+				(<%= mail_to @connection.mentee.email %>)				
+			</dd>
+
+
+			<dt class="col-sm-2">Connected since</dt>
+			<dd class="col-sm-10">
+				<%if @connection.created_at %>
+				<%= time_ago_in_words @connection.created_at %> ago
+				<% end %>      
+			</dd>      
+
+			<dt class="col-sm-2">Status</dt>
+			<dd class="col-sm-10">
+				<span class="tag <%= @connection.status %>">
+					<%= @connection.status %>
+				</span>
+			</dd>     
+		</dl>
+	</div>
+
+	<div>
+		<%= link_to "Close connection", '#' %>
+	</div>
+
+
 	<div id="connection-table-header">
 		<span><h2 class="inline-header">Updates</h2></span>
 		<span>
@@ -58,5 +83,4 @@
    			<% end %>
    		</tbody>
 	</table>
-
-
+</div>
