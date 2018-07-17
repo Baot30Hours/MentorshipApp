@@ -49,6 +49,7 @@
   </div>
 
   <div class="actions submit-btn">
-    <%= form.submit "Create", {class: "btn btn-default"}%>
+    <%= link_to '‹ Back', mentees_path, {class: "btn btn-outline-primary btn-lg"} %>&nbsp;&nbsp;
+    <%= form.submit action_name, {class: "btn btn-primary btn-lg"}%>
   </div>
 <% end %>

@@ -1,9 +1,10 @@
-<% if @mentor.present?%>
-<h1 class="form_header"> New Mentee for <%= @mentor.name %> </h1>
-<% end %>
-<% if @mentee.present?%>
-<h1 class="form_header"> New Mentor for <%= @mentee.name %> </h1>
-<% end %>
+<div class="form-container">
+    <% if @mentor.present?%>
+    <h1 class="form_header"> New Mentee for <%= @mentor.name %> </h1>
+    <% end %>
+    <% if @mentee.present?%>
+    <h1 class="form_header"> New Mentor for <%= @mentee.name %> </h1>
+    <% end %>
 
-<%= render 'form', connection: @connection %>
-
+    <%= render 'form', connection: @connection %>
+</div>

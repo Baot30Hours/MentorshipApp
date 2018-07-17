@@ -1,6 +1,4 @@
-<h1>Editing Mentee</h1>
-
-<%= render 'form', mentee: @mentee %>
-
-<%= link_to 'Show', @mentee %> |
-<%= link_to 'Back', mentees_path %>
+<div class="form-container">
+    <h1>Editing Mentee</h1>
+    <%= render 'form', mentee: @mentee, action_name: 'Save' %>
+</div>
