@@ -12,7 +12,11 @@
       <dd class="col-sm-10"><%= mail_to @mentor.email %></dd>
 
       <dt class="col-sm-2">Joined</dt>
-      <dd class="col-sm-10"><%= time_ago_in_words @mentor.date_created %> ago</dd>      
+      <dd class="col-sm-10">
+        <%if @mentor.date_created %>
+          <%= time_ago_in_words @mentor.date_created %> ago
+        <% end %>      
+      </dd>      
 
       <dt class="col-sm-2">Works at</dt>
       <dd class="col-sm-10"><%= @mentor.company %></dd>      
