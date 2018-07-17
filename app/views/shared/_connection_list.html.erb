@@ -49,7 +49,7 @@
 						<td><%= time_ago_in_words connection.created_at%> ago</td>
 						<td><%= connection.events.length %></td>
 						<td><%= time_ago_in_words connection.last_updated %> ago</td>
-						<td><%= link_to 'Show details', events_path, :class => 'btn btn-outline-primary', :role => 'button' %></td>
+						<td><%= link_to 'Show details', connection, :class => 'btn btn-outline-primary', :role => 'button' %></td>
 					</tr>
 				<% end %>
 				</tbody>
