@@ -1,44 +1,42 @@
-<div class="container">
-  <div>
-    <h1 class="page_header">Mentor: <%= @mentor.name %></h1>
+<div class="mentor-mentee mentor show">
+  <h1 class="page-header">
+    <span class="category">Mentor</span> 
+    <%= @mentor.name %>
+  </h1>
+  
+  <div class="info-title">
+    <h3 class="inline-header">Profile</h3>&nbsp;
+    <%= link_to 'Edit', edit_mentor_path(@mentor)%> 
   </div>
-  <div>
-    <span><h3 class="inline-header">Profile  </h3></span>
-    <%= link_to 'Edit', edit_mentor_path(@mentor)  %> 
-  </div>
-  <p class="details">
-    <div class="row">
-      <div class="col-xs-2">Email</div>
-      <div class="col-xs-2"><%= @mentor.email %></div>
-    </div>
-    <div class="row">
-      <div class="col-xs-2">Joined</div>
-      <div class="col-xs-2"><%= @mentor.date_created%></div>
-    </div>
-    <div class="row">
-      <div class="col-xs-2">Works at</div>
-      <div class="col-xs-2"><%= @mentor.company %></div>
-    </div>
-    <div class="row">
-      <div class="col-xs-2">Title</div>
-      <div class="col-xs-2"><%= @mentor.job_title %></div>
-    </div>
-    <div class="row">
-      <div class="col-xs-2">Expertise</div>
-      <div class="col-xs-2"><%= @mentor.expertise %></div>
-    </div>
-    <div class="row">
-      <div class="col-xs-2">Slots</div>
-      <div class="col-xs-2"><%= @mentor.mentee_slots %> (<%= @mentor.available_mentee_slots %> open)</div>
-    </div>
-</p>
 
-<div>
-    <span><h3 class="inline-header">Mentees  </h3></span>
-    <span><%= link_to '+ New Mentee', new_connection_path, :class => 'btn btn-lg pull-right', :role => 'button' %></span>
+  <div class="details">
+    <dl class="row">
+      <dt class="col-sm-2">Email</dt>
+      <dd class="col-sm-10"><%= mail_to @mentor.email %></dd>
+
+      <dt class="col-sm-2">Joined</dt>
+      <dd class="col-sm-10">
+        <%if @mentor.date_created %>
+          <%= time_ago_in_words @mentor.date_created %> ago
+        <% end %>      
+      </dd>      
+
+      <dt class="col-sm-2">Works at</dt>
+      <dd class="col-sm-10"><%= @mentor.company %></dd>      
+
+      <dt class="col-sm-2">Title</dt>
+      <dd class="col-sm-10"><%= @mentor.job_title %></dd>      
+
+      <dt class="col-sm-2">Expertise</dt>
+      <dd class="col-sm-10"><%= @mentor.expertise %></dd>      
+
+      <dt class="col-sm-2">Mentee Slots</dt>
+      <dd class="col-sm-10"><%= @mentor.mentee_slots %> (<%= @mentor.available_mentee_slots %> open)</dd>      
+    </dl>
   </div>
-  <%= render 'mentees_list', mentor: @mentor %>
+
+  <hr/>
+
+  <%= render 'shared/connection_list', person: @mentor %>
+
 </div>
-
-
-<%= link_to 'Back', mentors_path %>

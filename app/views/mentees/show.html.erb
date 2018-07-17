@@ -1,43 +1,42 @@
-<div class="container">
-  <div>
-    <h1 class="page_header">Mentee: <%= @mentee.name %></h1>
+<div class="mentor-mentee mentee show">
+  <h1 class="page-header">
+    <span class="category">Mentee</span>
+    <%= @mentee.name %>
+   </h1>
+   
+  <div class="info-title">
+    <h3 class="inline-header">Profile</h3>&nbsp;
+    <%= link_to 'Edit', edit_mentee_path(@mentee) %> 
   </div>
-  <div>
-    <span><h3 class="inline-header">Profile  </h3></span>
-    <%= link_to 'Edit', edit_mentee_path(@mentee)  %> 
+
+  <div class="details">
+    <dl class="row">
+      <dt class="col-sm-2">Email</dt>
+      <dd class="col-sm-10"><%= mail_to @mentee.email %></dd>
+
+      <dt class="col-sm-2">Joined</dt>
+      <dd class="col-sm-10">
+        <%if @mentee.date_created %>
+          <%= time_ago_in_words @mentee.date_created %> ago
+        <% end %>
+      </dd>      
+
+      <dt class="col-sm-2">Works at</dt>
+      <dd class="col-sm-10"><%= @mentee.company %></dd>      
+
+      <dt class="col-sm-2">Title</dt>
+      <dd class="col-sm-10"><%= @mentee.job_title %></dd>      
+
+      <dt class="col-sm-2">Expertise</dt>
+      <dd class="col-sm-10"><%= @mentee.expertise %></dd>      
+
+      <dt class="col-sm-2">Notes</dt>
+      <dd class="col-sm-10"><%= @mentee.notes %></dd>
+    </dl>
   </div>
-  <p class="details">
-    <div class="row">
-      <div class="col-xs-2">Email</div>
-      <div class="col-xs-2"><%= @mentee.email %></div>
-    </div>
-    <div class="row">
-      <div class="col-xs-2">Joined</div>
-      <div class="col-xs-2"><%= @mentee.date_created%></div>
-    </div>
-    <div class="row">
-      <div class="col-xs-2">Works at</div>
-      <div class="col-xs-2"><%= @mentee.company %></div>
-    </div>
-    <div class="row">
-      <div class="col-xs-2">Title</div>
-      <div class="col-xs-2"><%= @mentee.job_title %></div>
-    </div>
-    <div class="row">
-      <div class="col-xs-2">Expertise</div>
-      <div class="col-xs-2"><%= @mentee.expertise %></div>
-    </div>
-    <div class="row">
-      <div class="col-xs-2">Notes</div>
-      <div class="col-xs-2"><%= @mentee.notes %></div>
-    </div>
-</p>
 
-<div>
-    <span><%= link_to '+ New Mentor', new_connection_path, :class => 'btn btn-lg pull-right', :role => 'button' %></span>
+  <hr/>
+
+  <%= render 'shared/connection_list', person: @mentee %>
+
 </div>
-  <%= render 'mentors_list', mentor: @mentee %>
-</div>
-
-
-<%= link_to 'Back', mentees_path %>

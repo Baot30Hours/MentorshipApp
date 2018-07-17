@@ -13,4 +13,12 @@ class Mentor < ApplicationRecord
   def available_mentee_slots
   	self.mentee_slots - (self.connections.select { |connection| connection.status == 'active'}).count
   end
+
+  def new_connection_path
+    "/connections/new?mentor_id=" + id.to_s
+  end
+
+	before_create do
+		self.date_created = Time.now
+	end  
 end

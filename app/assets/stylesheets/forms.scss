@@ -1,0 +1,38 @@
+.form-container {
+	width: 500px;
+	margin: 0 auto;
+
+	h1 {
+		font-size: 28px;
+		margin-bottom: 30px;
+	}
+
+	textarea.form-control {
+		width: 100%;
+		resize: vertical;
+	}
+	
+	div.field_with_errors > input {
+		border-color: red;
+	}
+	
+	.error-message {
+		color: red;
+	}
+	
+	.field-name {
+		font-size: 18px;	
+		font-weight: bold;
+		color: #777777;
+		width: 110px;
+		display: inline-block;
+	}
+	
+	.field-content {
+		font-size: 18px;	
+	}	
+
+	.actions {
+		text-align: right;
+	}
+}

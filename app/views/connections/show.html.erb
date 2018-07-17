@@ -1,62 +1,61 @@
+<div class="connection show">
+	<h1 class="page-header">
+		<span class="category">Connection</span> 
+		<%= @connection.display_name %> 
+	</h1>
 
-
-	<h1 class="page_header">Connection: <%= @connection.display_name %> </h1>
-
-	<div id="connection-info">
-		<h3>Info</h6>
-		<ul id="connection-info-list">
-			<li>
-				<span class="field-name">mentor</span>
-				<span class="field-content">
-					<%= link_to @connection.mentor.name, @connection.mentor, class: :"link_text" %>, 
-					<%= @connection.mentor.job_title%> at <%= @connection.mentor.company%> 
-					(<%= mail_to @connection.mentor.email, @connection.mentor.email ,class: :"link_text" %>)
-				</span>
-			</li>
-			<li>
-				<span class="field-name">mentee</span>
-				<span class="field-content">
-					<%= link_to @connection.mentee.name, @connection.mentee, class: :"link_text" %>, 
-					<%= @connection.mentee.job_title%> at <%= @connection.mentee.company%> 
-					(<%= mail_to @connection.mentee.email, @connection.mentee.email ,class: :"link_text" %>)
-				</span>
-			</li>
-			<li><span class="field-name">connected</span>
-				<span class="field-content"><%= @connection.created_at.strftime("%F") %></span>
-			</li>
-			<li><span class="field-name">status</span>
-				<span class="field-content"><%= @connection.status%></span>
-			</li>
-		</ul>	
-
-		<%= link_to "close connection", connection_path %>
+	<div class="info-title">
+		<h3>Info</h3>
 	</div>
-	<div id="connection-table-header">
-		<span><h2 class="inline-header">Updates</h2></span>
-		<span>
-			<%= link_to "New Update", new_event_path(:connection_id => @connection.id ), 
-			:class => 'btn-lg pull-right', :role => 'button'%>	
-		</span>
+
+	<div class="details">
+		<dl class="row">
+			<dt class="col-sm-2">Mentor</dt>
+			<dd class="col-sm-10">
+				<%= link_to @connection.mentor.name, @connection.mentor %>, 
+
+				<% if @connection.mentor.company || @connection.mentor.job_title %>
+					<%= @connection.mentor.job_title ? @connection.mentor.job_title : 'Works' %> 
+					<%= @connection.mentor.company ? 'at ' + @connection.mentor.company : nil %> 
+				<% end %>
+
+				(<%= mail_to @connection.mentor.email %>)
+			</dd>
+
+			<dt class="col-sm-2">Mentee</dt>
+			<dd class="col-sm-10">
+				<%= link_to @connection.mentee.name, @connection.mentee %>, 
+
+				<% if @connection.mentee.company || @connection.mentee.job_title %>
+					<%= @connection.mentee.job_title ? @connection.mentee.job_title : 'Works' %> 
+					<%= @connection.mentee.company ? 'at ' + @connection.mentee.company : nil %> 
+				<% end %>
+
+				(<%= mail_to @connection.mentee.email %>)				
+			</dd>
+
+
+			<dt class="col-sm-2">Connected since</dt>
+			<dd class="col-sm-10">
+				<%if @connection.created_at %>
+				<%= time_ago_in_words @connection.created_at %> ago
+				<% end %>      
+			</dd>      
+
+			<dt class="col-sm-2">Status</dt>
+			<dd class="col-sm-10">
+				<span class="tag <%= @connection.status %>">
+					<%= @connection.status %>
+				</span>
+			</dd>     
+		</dl>
 	</div>
-	<table class="table">
-		<thead>
-      		<tr>
-			    <th scope="col">Date</th>
-			    <th scope="col">Type</th>
-			    <th scope="col">Notes</th>
-			    <th scope="col">Actions</th>
-      		</tr>
-   		</thead>
-   		<tbody>
-   			<% @connection.events.reverse.each do |record| %>
-   				<tr>
-   					<td><%= record.created_at.strftime("%F") %> </td>
-   					<td><%= record.event_type %></td>
-   					<td><%= record.notes %></td>
-   					<td><%=  %></td>
-   				</tr>	
-   			<% end %>
-   		</tbody>
-	</table>
 
+	<div>
+		<%= link_to "Close connection", '#' %>
+	</div>
 
+    <hr/>
+
+  	<%= render 'events_list', connection: @connection %>
+</div>

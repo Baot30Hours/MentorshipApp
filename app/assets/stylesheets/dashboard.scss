@@ -1,0 +1,17 @@
+.dashboard {
+    .table-header {
+        margin-top: 50px;
+        margin-bottom: 35px;
+    }
+
+    .tag {
+
+        &.tag-mentor {
+            background: #4DB6AC;
+        }
+
+        &.tag-mentee {
+            background: #64B5F6;
+        }
+    }
+}

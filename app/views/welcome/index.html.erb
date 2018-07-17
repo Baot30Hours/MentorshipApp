@@ -2,6 +2,23 @@
 	<% if logged_in? %>
    	 <%= render 'dashboard' %>
 	<% else %>
-   		<h1>Hello!</h1>    
+		<div class="landing-page">
+
+			<div class="jumbotron" style="width: 700px; margin: 0 auto">
+				<h1 class="display-4">Hi, there!</h1>
+				<h4>Welcome to the Baot Mentorship App.</h4>
+				<p class="lead">
+				</p>
+
+				<hr class="my-4">
+				
+				<p>Are you a Baot mentorship manager?</p>
+
+				<a class="btn btn-primary btn-lg" href="/users/login" role="button">
+				Log in
+				</a>
+			</div>
+
+		</div>
     <% end %>  
     

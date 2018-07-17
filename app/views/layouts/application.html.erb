@@ -1,7 +1,16 @@
 <!DOCTYPE html>
-<html>
+<html class="no-js" lang="">
   <head>
-    <title>MentorshipApp</title>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <%= favicon_link_tag %>
+    <%= favicon_link_tag 'favicon-96.png', rel: 'apple-touch-icon', type: 'image/png' %>
+    
+    <title>Baot Mentorship</title>
+
     <%= csrf_meta_tags %>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
@@ -9,33 +18,25 @@
   </head>
  
   <body>
-    <header class="navbar navbar-static-top navbar-inverse">
-      <div class="container">
-          <nav>
-            <span class="nav navbar-nav navbar-left navbar-brand">Baot</span>
-          </nav>
-          <% if logged_in? %>
-            <%= render 'shared/navigation' %>
-          <% else %>
-            <%= render 'shared/navigation_guest' %>
-          <% end %>  
-      </div>
+    <header>
+      <nav class="navbar navbar-expand-lg navbar-dark">
+      <a class="navbar-brand" href="/">Baot Mentorship</a>
+
+        <% if logged_in? %>
+          <%= render 'shared/navigation' %>
+        <% else %>
+          <%= render 'shared/navigation_guest' %>
+        <% end %>  
+      </nav>    
     </header>
 
-    <div class="container">
+    <div class="container" style="padding-top: 30px">
+      <% if notice %>
+        <p id="notice"><%= notice %></p>
+      <% end %>
+
       <%= yield %>  
       <%= yield :form_errors %>
     </div>
-    <!-- <div class="container">
-      <% flash.each do |message_type, message| %>
-        <div class="alert alert-<%= message_type %>"><%= message %></div>
-      <% end %>
-      <%= yield %>
-    </div>
-  </body>
-
-  <% flash.each do |key, value| %>
-    <div class="flash <%= key %>"><%= value %></div>
-  <% end %> -->
 
 </html>

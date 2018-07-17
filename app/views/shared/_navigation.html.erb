@@ -1,7 +1,11 @@
-<nav>
-  <ul class="nav navbar-nav navbar-right">
-  	<li><%= link_to 'Home', {controller: 'welcome'}%></li>
-	  <li><%= link_to 'Mentors', {controller: 'mentors'}%></li>
-	  <li><%= link_to 'Mentees', {controller: 'mentees'}%></li>  
-	  <li><%= link_to 'Log Out', '/users/logout'%></li>
-</nav>
+<div class="collapse navbar-collapse" id="navbarNav">
+	<ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+		<!-- Additional left items can come here -->
+	</ul>
+	
+	<ul class="navbar-nav my-2 my-lg-0">
+	  <li><%= link_to 'Mentors', {controller: 'mentors'}, {:class => 'nav-link'} %></li>
+	  <li><%= link_to 'Mentees', {controller: 'mentees'}, {:class => 'nav-link'} %></li>  
+	  <li><%= link_to 'Log Out', '/users/logout', {:class => 'nav-link'} %></li>
+	</ul>
+</div>

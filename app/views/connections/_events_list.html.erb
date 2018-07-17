@@ -1,0 +1,62 @@
+<div class="events-list">
+
+	<!-- Header -->
+	<div class="row table-header">
+		<div class="col">
+			<h3>Relationship updates</h3>
+		</div>
+		<div class="col col-lg-auto">
+            <%= link_to '+ New Update', 
+                new_event_path(:connection_id => connection.id ), 
+                :class => 'btn btn-lg btn-primary', :role => 'button' %>
+		</div>
+	</div>
+
+	<!-- Empty state -->
+	<% if connection.events.empty?  %>
+
+   		<h4> Nothing here (yet!) </h4>
+
+	<!-- List -->		   
+	<% else %>
+
+		<div class="table-responsive events-list">
+			<table class="table">
+				<tr>
+					<th scope="col">Date</th>
+					<th scope="col">Update type</th>
+					<th scope="col">Notes</th>
+					<th scope="col">Actions</th>
+				</tr>
+
+				<tbody>
+					<% connection.events.reverse.each do |event| %>
+					<tr>
+						<td>
+							<% if event.event_date %>
+                            	<%= time_ago_in_words event.event_date %> ago
+							<% end %>
+						</td>
+						<td>
+							<span class="tag <%=event.event_type%>">
+								<%= event.event_type %>
+							</span>
+						</td>
+
+						<td>
+                            <%= event.notes %>
+                        </td>
+
+                        <td>                  
+							<%= link_to 'Edit', edit_event_path(event), :class => 'btn btn-sm btn-outline-primary', :role => 'button' %>
+                  			<%= link_to 'Remove', event, method: :delete, data: { confirm: 'Are you sure?' }, :class => 'btn btn-sm btn-outline-danger', :role => 'button' %>
+						</td>
+
+					</tr>
+				<% end %>
+				</tbody>
+			</table>
+		</div>
+
+	<% end %>
+</div>

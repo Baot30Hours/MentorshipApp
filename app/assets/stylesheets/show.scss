@@ -1,0 +1,28 @@
+.show {
+    h1 .category {
+        color: #aaa;
+        display: inline-block;
+        margin-right: 20px;
+    }
+
+    .info-title {
+        margin-bottom: 20px;
+    }
+
+    .details {
+        dt {
+            color: #777;
+            margin-bottom: 8px;
+        }
+    }
+
+    .tag {
+        &.active {
+             background: #64B5F6;
+        }
+    
+        &.closed {
+            background: #9E9E9E;
+        }
+    }    
+}
