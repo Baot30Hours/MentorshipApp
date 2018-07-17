@@ -30,7 +30,9 @@
       </nav>    
     </header>
 
-    <div class="container">
+    <div class="container" style="padding-top: 30px">
+      <p id="notice"><%= notice %></p>
+
       <%= yield %>  
       <%= yield :form_errors %>
     </div>
