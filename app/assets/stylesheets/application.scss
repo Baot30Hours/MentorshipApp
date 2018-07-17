@@ -16,4 +16,26 @@
 
 @import "bootstrap";
 
+h1.page-header {
+	margin-bottom: 50px;
+}
 
+.inline-header {
+	display: inline;
+}
+
+#dashboard-table-header, #connection-table-header {
+	margin-top: 50px;
+	margin-bottom: 50px;
+}
+
+#connection-info-list {
+	list-style-type: none;
+	padding-left: 0;
+}
+
+.link_text {
+	color: #119BC6;
+	text-decoration: underline;
+	margin-right: 10px;
+}
