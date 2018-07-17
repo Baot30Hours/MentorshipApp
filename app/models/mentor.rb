@@ -17,4 +17,8 @@ class Mentor < ApplicationRecord
   def new_connection_path
     "/connections/new?mentor_id=" + id.to_s
   end
+
+	before_create do
+		self.date_created = Time.now
+	end  
 end
