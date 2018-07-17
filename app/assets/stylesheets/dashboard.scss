@@ -1,6 +1,7 @@
 .dashboard {
     .table-header {
-        margin-bottom: 25px;
+        margin-top: 50px;
+        margin-bottom: 35px;
     }
 
     .tag {
@@ -13,11 +14,11 @@
         border-radius: 3px;
 
         &.tag-mentor {
-            background: #7E57C2;
+            background: #7986CB;
         }
 
         &.tag-mentee {
-            background: #66BB6A;
+            background: #81C784;
         }
     }
 }
