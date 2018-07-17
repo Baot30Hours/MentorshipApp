@@ -39,11 +39,11 @@
 				</td>
 				<td><%= record.company %></td>
 				<td><%= record.job_title %></td>
-				<td><% record.connections.each do |connection| %>
+				<td><% record.connections.each_with_index do |connection, index| %>
 						<% if record.is_a?(Mentor) %>
-							<%= link_to connection.mentee.name, connection %>
+							<%= link_to connection.mentee.name, connection %><%= index + 1 < record.connections.length ? ', ' : nil %>
 						<% else %>
-							<%= link_to connection.mentor.name, connection %>
+							<%= link_to connection.mentor.name, connection %><%= index + 1 < record.connections.length ? ', ' : nil %>
 						<% end %>
 					<% end %>
 				</td>
