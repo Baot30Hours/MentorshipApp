@@ -11,6 +11,10 @@ class Mentee < ApplicationRecord
 		"/connections/new?mentee_id=" + id.to_s
 	end
 
+	def name_and_Expertise
+    		"#{self.name} - #{self.expertise}"
+        end
+	
 	before_create do
 		self.date_created = Time.now
 	end
