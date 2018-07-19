@@ -24,7 +24,7 @@
       <%= form.hidden_field :mentee_id, :value => @mentee.id %>
     <% else %>
       <%= form.label :mentee_id, class: :"form-label" %>
-      <%= form.collection_select :mentee_id, Mentee.all, :id, :name, {:include_blank => true}, {class: :"form-control"} %>
+      <%= form.collection_select :mentee_id, Mentee.all, :id, :name_and_expertise, {:include_blank => true}, {class: :"form-control"} %>
     <% end %>
   </div>
 
@@ -33,7 +33,7 @@
       <%= form.hidden_field :mentor_id, :value => @mentor.id %>
     <% else %>
       <%= form.label :mentor_id, class: :"form-label" %>
-      <%= form.collection_select :mentor_id, Mentor.all, :id, :name, {:include_blank => true}, {class: :"form-control"} %>
+      <%= form.collection_select :mentor_id, Mentor.all, :id, :name_and_expertise, {:include_blank => true}, {class: :"form-control"} %>
     <% end %>
   </div>
 
