@@ -11,7 +11,7 @@ class Mentee < ApplicationRecord
 		"/connections/new?mentee_id=" + id.to_s
 	end
 
-	def name_and_Expertise
+	def name_and_expertise
     		"#{self.name} - #{self.expertise}"
         end
 	
